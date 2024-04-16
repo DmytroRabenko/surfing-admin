@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import Navbar from 'src/components/navbar/navbar';
+import Navbar from 'src/components/navbar';
+import '../assets/scss/index.scss'
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -7,7 +8,7 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div>
+    <div className='wrapper'>
       <aside><Navbar/></aside> 
       <main>{children}</main>
     </div>
