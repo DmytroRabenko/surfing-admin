@@ -1,17 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from 'src/components/layout/layout';
-import Dashboard from 'src/pages/dashboard/dashboard';
+import { useRoutes } from 'react-router-dom';
+import { router } from './router';
+import MainLayout from './layout/MainLayout';
 
 const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Dashboard />} />
-        </Route>
-      </Routes>
-    </Router>
-  );
+  const routers = useRoutes(router);
+
+  return <MainLayout>{routers}</MainLayout>;
 };
 
 export default App;

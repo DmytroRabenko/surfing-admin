@@ -1,4 +1,4 @@
-const Navbar = () =>{
-    return<div>Navbar</div>
-}
+const Navbar = () => {
+  return <div>Navbar</div>;
+};
 export default Navbar;
