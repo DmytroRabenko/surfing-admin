@@ -1,0 +1,76 @@
+//! temporary
+main {
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.statisticBlock {
+  display: flex;
+  padding: 32px 64px;
+  justify-content: space-between;
+  align-items: center;
+  height: 151px;
+  width: 100%;
+  border-radius: 30px;
+  background-color: #fff ;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.itemImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F3F3F3;
+  height: 84px;
+  width: 84px;
+  border-radius: 50%;
+}
+
+.statistic {
+  display: flex;
+  align-items: end;
+  font-size: 12px;
+}
+
+.itemWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.delimiter {
+  height: 100%;
+  border-left: 1px solid #F0F0F0;
+}
+
+.title {
+  margin-bottom: 9px;
+}
+
+.count {
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.statisticImg {
+  margin-right: 3px;
+}
+
+.statisticPercentPositive {
+  margin-right: 3px;
+  color: #4C956C;
+}
+
+.statisticPercentNegative {
+  margin-right: 3px;
+  color: #FF5959;
+}
