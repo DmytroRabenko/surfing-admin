@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import Navbar from 'src/components/navbar/navbar';
 
 type MainLayoutProps = {
   children: ReactNode;
@@ -7,7 +8,7 @@ type MainLayoutProps = {
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div>
-      <aside></aside> 
+      <aside><Navbar/></aside> 
       <main>{children}</main>
     </div>
   );
