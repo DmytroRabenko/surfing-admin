@@ -1,8 +1,7 @@
 
 
-type Props = {}
 
-const Calendar = (props: Props) => {
+const Calendar = () => {
   return (
     <div>Calendar</div>
   )
