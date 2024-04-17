@@ -8,27 +8,32 @@
   box-sizing: border-box;
 }
 
-ul{
+ul {
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
   color: inherit;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  color:  rgba(0, 0, 0, 1);
+  color: rgba(0, 0, 0, 1);
   font-size: 14px;
 }
 
-main{
-    flex: 1;
-    background: $bg;
-    overflow-y: auto;
+main {
+  flex: 1;
+  background: $bg;
+  overflow-y: auto;
 }
 
 .wrapper {
   display: flex;
 }
 
+.rounded-content-wrapper {
+  background-color: $color-white;
+  border-radius: 20px;
+}
