@@ -1,14 +1,14 @@
-import s from './statistic.module.scss';
+import s from './Statistic.module.scss';
 
-import StatisticItem from './statistic-item';
+import { StatisticItem } from '../StatisticItem';
 
-import moneyReceive from '../../assets/images/icons/money-receive.svg';
-import walletMoney from '../../assets/images/icons/wallet-money.svg';
-import boards from '../../assets/images/icons/boards.svg';
+import moneyReceive from '../../../assets/images/icons/money-receive.svg';
+import walletMoney from '../../../assets/images/icons/wallet-money.svg';
+import boards from '../../../assets/images/icons/boards.svg';
 
-const Statistic = () => {
+export const Statistic = () => {
   return (
-    <div className={s.statisticBlock}>
+    <div className={s.statistic}>
       <StatisticItem
         imgPath={moneyReceive}
         imgAlt="Money receive"
@@ -39,4 +39,4 @@ const Statistic = () => {
   );
 };
 
-export default Statistic;
+
