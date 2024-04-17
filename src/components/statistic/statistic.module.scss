@@ -12,6 +12,7 @@ main {
   padding: 32px 64px;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   height: 151px;
   width: 100%;
   border-radius: 30px;
@@ -38,6 +39,7 @@ main {
   display: flex;
   align-items: end;
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .itemWrapper {
