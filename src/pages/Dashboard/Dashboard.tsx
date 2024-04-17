@@ -5,7 +5,7 @@ import RadialDiagram from 'src/components/dashboard/RadialDiagram';
 import RentalTable from 'src/components/dashboard/RentalTable';
 
 import s from './Dashboard.module.scss';
-import Statistic from 'src/components/dashboard/Statistic/Statistic';
+import { Statistic } from 'src/components/dashboard/Statistic';
 
 const Dashboard = () => {
   return (
