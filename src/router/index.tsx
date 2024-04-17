@@ -1,8 +1,8 @@
-import Calendar from 'src/pages/calendar';
-import Chat from 'src/pages/chat';
-import Inventory from 'src/pages/inventory';
-import Page404 from 'src/pages/not-found404';
-import Dashboard from 'src/pages/dashboard';
+import Calendar from 'src/pages/Calendar';
+import Chat from 'src/pages/Chat';
+import Inventory from 'src/pages/Inventory';
+import Page404 from 'src/pages/NotFound';
+import Dashboard from 'src/pages/Dashboard';
 
 export const router = [
   {

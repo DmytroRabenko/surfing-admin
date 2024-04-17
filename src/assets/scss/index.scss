@@ -2,9 +2,33 @@
 @import '_variables';
 @import '_mixins';
 
-body{
-    font-family: 'Roboto', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-.wrapper{
-    display: flex;
+
+ul{
+  list-style: none;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color:  rgba(0, 0, 0, 1);
+  font-size: 14px;
+}
+
+main{
+    flex: 1;
+    background: $bg;
+    overflow-y: auto;
+}
+
+.wrapper {
+  display: flex;
+}
+
