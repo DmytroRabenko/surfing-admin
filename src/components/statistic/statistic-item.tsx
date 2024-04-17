@@ -18,8 +18,8 @@ const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }: Props
   return (
     <>
       <div className={s.item}>
-        <div className={s.itemImg}>
-          <img src={imgPath} alt={imgAlt} />
+        <div className={s.itemImgContainer}>
+          <img className={s.itemImg} src={imgPath} alt={imgAlt} />
         </div>
         <div className={s.itemWrapper}>
           <span className={s.title}>{title}</span>
