@@ -2,9 +2,9 @@ import s from './Statistic.module.scss';
 
 import { StatisticItem } from '../StatisticItem';
 
-import moneyReceive from '../../../assets/images/icons/money-receive.svg';
-import walletMoney from '../../../assets/images/icons/wallet-money.svg';
-import boards from '../../../assets/images/icons/boards.svg';
+import moneyReceive from '../../../assets/icons/money-receive.svg';
+import walletMoney from '../../../assets/icons/wallet-money.svg';
+import boards from '../../../assets/icons/boards.svg';
 
 export const Statistic = () => {
   return (

@@ -1,7 +1,7 @@
 import s from './StatisticItem.module.scss';
 
-import arrowUp from '../../../assets/images/icons/arrow-up-stat.svg';
-import arrowDown from '../../../assets/images/icons/arrow-down-stat.svg';
+import arrowUp from '../../../assets/icons/arrow-up-stat.svg';
+import arrowDown from '../../../assets/icons/arrow-down-stat.svg';
 
 interface Props {
   imgPath: string;
