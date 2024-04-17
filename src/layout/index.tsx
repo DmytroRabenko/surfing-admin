@@ -9,7 +9,7 @@ type MainLayoutProps = {
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <div className='wrapper'>
-      <aside><Navbar/></aside> 
+      <Navbar/>
       <main>{children}</main>
     </div>
   );

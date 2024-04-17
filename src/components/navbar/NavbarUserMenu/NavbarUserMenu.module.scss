@@ -1,0 +1,48 @@
+@import 'src/assets/scss/variables';
+.NavbarUserMenu {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  .userImg {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: rgba(217, 217, 217, 1);
+  }
+  .userContent {
+    position: relative;
+    cursor: pointer;
+   // flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    .userInfo {
+      span {
+        display: block;
+      }
+      .name {
+        font-weight: 500;
+        font-size: 14px;
+      }
+      .position {
+        font-size: 12px;
+        color: $color-text-gray2;
+      }
+    }
+    .shevron {
+      position: absolute;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      transform: rotate(90deg);
+    }
+  }
+}

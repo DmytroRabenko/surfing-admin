@@ -1,3 +1,23 @@
-.navbar{
+@import 'src/assets/scss/variables';
+
+.nav__bar {
+  width: 102px;
+  background: $color-white;
+  height: 100vh;
+  padding: 37px 28px 20px;
+  transition: $transition;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &.open {
     width: 306px;
-    background: black}
+  }
+  .logo {
+    width: 37px;
+    height: 37px;
+  }
+  .navbarList {
+    margin: 54px 0;
+  }
+}

@@ -1,0 +1,51 @@
+@import 'src/assets/scss/variables';
+
+.navbarItem {
+  width: 100%;
+  height: 46px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: $transition;
+  color: $color-text-gray;
+  &.active {
+    color: $color-white;
+    background-color: $color-blue;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px;
+    width: 100%;
+  }
+  .navbarItem__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    fill: currentColor;
+    color: currentColor;
+  }
+  .navbarItem__content {
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    span {
+      height: 20px;
+    }
+    &.active {
+      img {
+        transition: $transition;
+        display: none;
+      }
+    }
+    .shevron {
+      position: absolute;
+      right: 20px;
+    }
+  }
+}
