@@ -12,7 +12,7 @@ interface Props {
   period: string;
 }
 
-export const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }: Props) => {
+const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }: Props) => {
   const positiveStat = percent > 0;
 
   return (
@@ -38,3 +38,5 @@ export const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }
     </>
   );
 };
+
+export default StatisticItem

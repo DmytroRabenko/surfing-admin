@@ -1,12 +1,12 @@
 import s from './Statistic.module.scss';
 
-import { StatisticItem } from '../StatisticItem';
+import StatisticItem from '../StatisticItem';
 
 import moneyReceive from '../../../assets/icons/money-receive.svg';
 import walletMoney from '../../../assets/icons/wallet-money.svg';
 import boards from '../../../assets/icons/boards.svg';
 
-export const Statistic = () => {
+const Statistic = () => {
   return (
     <div className={s.statistic}>
       <StatisticItem
@@ -38,5 +38,7 @@ export const Statistic = () => {
     </div>
   );
 };
+
+export default Statistic
 
 
