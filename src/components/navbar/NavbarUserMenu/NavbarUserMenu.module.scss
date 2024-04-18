@@ -1,10 +1,10 @@
 @import 'src/assets/scss/variables';
-.NavbarUserMenu {
+.NavbarUserMenu__button {
+  cursor: pointer;
   width: 100%;
   height: 42px;
   display: flex;
   align-items: center;
-  gap: 12px;
   .userImg {
     width: 42px;
     height: 42px;
@@ -13,36 +13,35 @@
   }
   .userContent {
     position: relative;
-    cursor: pointer;
-   // flex: 1;
+    flex: 1;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
     overflow: hidden;
+    // margin-right: 20px;
     .userInfo {
+      padding-left: 12px;
+      display: flex;
+      flex-direction: column;
       span {
+        width: 100%;
         display: block;
+        height: 15px;
       }
-      .name {
+      .userInfo__name {
         font-weight: 500;
         font-size: 14px;
       }
-      .position {
+      .userInfo__position {
         font-size: 12px;
         color: $color-text-gray2;
       }
     }
-    .shevron {
-      position: absolute;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
+    .chevron {
       transform: rotate(90deg);
+      margin-right: 20px;
     }
   }
 }
