@@ -1,9 +1,7 @@
-import React from 'react'
+import pageStyle from '../../../pages/Dashboard/Dashboard.module.scss';
 
-type Props = {}
+const RentalTable = () => {
+  return <div className={pageStyle.contentWrapper}>RentalTable</div>;
+};
 
-const RentalTable = (props: Props) => {
-  return <div className="rounded-content-wrapper">RentalTable</div>;
-}
-
-export default RentalTable
+export default RentalTable;

@@ -1,3 +1,21 @@
 .donutChart {
-    flex: 1
+
+    flex: 1;
+}
+
+.chartHeader {
+    padding: 20px 0 0 30px;
+    margin-bottom: 30px;
+
+    &__title {
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    &__subtitle {
+        margin-top: 3px;
+        color: #717171;
+        font-size: 12px;
+    }
+
 }

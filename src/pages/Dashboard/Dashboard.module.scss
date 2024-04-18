@@ -1,5 +1,19 @@
-.diagramWrapper {
+@import './../../assets/scss/mixins';
+
+.chartsWrapper {
     display: flex;
     gap: 35px;
-    // max-height: 378px;
+
+    @include tablet {
+        flex-direction: column
+    }
+    @include desktop {
+        flex-direction: row
+    }
+}
+
+.contentWrapper {
+    padding: 10px;
+    background-color: white;
+    border-radius: 20px;
 }
