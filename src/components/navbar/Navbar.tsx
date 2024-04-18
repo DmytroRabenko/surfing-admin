@@ -1,17 +1,23 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NavbarItem from './NavbarItem';
 import NavbarUserMenu from './NavbarUserMenu';
+import { default as Logo } from 'src/assets/icons/logo.svg?react';
+import { default as Dashboard } from 'src/assets/icons/dashboard.svg?react';
+import { default as Inventory } from 'src/assets/icons/inventory.svg?react';
+import { default as Listings } from 'src/assets/icons/listings.svg?react';
+import { default as Finance } from 'src/assets/icons/finance.svg?react';
+import { default as Calendar } from 'src/assets/icons/calendar.svg?react';
+import { default as Message } from 'src/assets/icons/message.svg?react';
 import s from './Navbar.module.scss';
-import { default as Logo } from "src/assets/icons/logo.svg?react";
 
 const navbarList = [
-  { name: 'Dashboard', icon: 'dashboard', to: '/' },
-  { name: 'Inventory', icon: 'inventory', to: '/inventory' },
-  { name: 'Listings', icon: 'calendar', to: '/listings' },
-  { name: 'Financials & Reports', icon: 'finance', to: '/financials' },
-  { name: 'Booking calendar', icon: 'calendar', to: '/calendar' },
-  { name: 'Messages', icon: 'message', to: '/messages' },
+  { name: 'Dashboard', icon: Dashboard, to: '/' },
+  { name: 'Inventory', icon: Inventory, to: '/inventory' },
+  { name: 'Listings', icon: Listings, to: '/listings' },
+  { name: 'Financials & Reports', icon: Finance, to: '/financials' },
+  { name: 'Booking calendar', icon: Calendar, to: '/calendar' },
+  { name: 'Messages', icon: Message, to: '/messages' },
 ];
 
 const Navbar = () => {
@@ -28,19 +34,20 @@ const Navbar = () => {
       }}
     >
       <div>
-        <div className={s.logo}>
-          <Logo/>
-        </div>
+        <Link to='/' className={s.logo}>
+          <Logo />
+        </Link>
         <ul className={s.navbarList}>
           {navbarList &&
             navbarList.map(item => (
               <NavbarItem
                 key={item.name}
                 name={item.name}
-                icon={item.icon}
                 to={item.to}
                 active={location.pathname === item.to}
-              />
+              >
+                <item.icon />
+              </NavbarItem>
             ))}
         </ul>
       </div>
