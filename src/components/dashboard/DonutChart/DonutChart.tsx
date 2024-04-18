@@ -1,5 +1,6 @@
 import { ApexOptions } from 'apexcharts';
 import Chart from 'react-apexcharts';
+import s from './DonutChart.module.scss';
 
 const donutColors = {
   series1: '#fdd835',
@@ -10,6 +11,9 @@ const donutColors = {
 };
 
 const options: ApexOptions = {
+  chart: {
+    id: 'basic-donut',
+  },
   stroke: { width: 0 },
   labels: ['Operational', 'Networking', 'Hiring', 'R&D'],
   colors: [donutColors.series1, donutColors.series5, donutColors.series3, donutColors.series2],
@@ -50,53 +54,54 @@ const options: ApexOptions = {
       },
     },
   },
-  responsive: [
-    {
-      breakpoint: 992,
-      options: {
-        chart: {
-          height: 380,
-        },
-        legend: {
-          position: 'bottom',
-        },
-      },
-    },
-    {
-      breakpoint: 576,
-      options: {
-        chart: {
-          height: 320,
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              labels: {
-                show: true,
-                name: {
-                  fontSize: '',
-                },
-                value: {
-                  fontSize: '',
-                },
-                total: {
-                  fontSize: '',
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  ],
 };
 
-const RadialDiagram = () => {
+const DonutChart = () => {
   return (
-    <div className="rounded-content-wrapper">
-      <Chart type="donut" options={options} series={[85, 16, 50, 50]} />
+    <div className={`${s.donutChart} content-wrapper`}>
+      <Chart type="donut" options={options} series={[85, 16, 50, 50]} height={380} />
     </div>
   );
 };
 
-export default RadialDiagram;
+export default DonutChart;
+
+//  responsive: [
+//     {
+//       breakpoint: 992,
+//       options: {
+//         chart: {
+//           height: 380,
+//         },
+//         legend: {
+//           position: 'bottom',
+//         },
+//       },
+//     },
+//     {
+//       breakpoint: 576,
+//       options: {
+//         chart: {
+//           height: 320,
+//         },
+//         plotOptions: {
+//           pie: {
+//             donut: {
+//               labels: {
+//                 show: true,
+//                 name: {
+//                   fontSize: '',
+//                 },
+//                 value: {
+//                   fontSize: '',
+//                 },
+//                 total: {
+//                   fontSize: '',
+//                 },
+//               },
+//             },
+//           },
+//         },
+//       },
+//     },
+//   ],

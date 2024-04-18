@@ -1,0 +1,90 @@
+import { ApexOptions } from 'apexcharts';
+
+const yAxisData = [30, 40, 45, 25, 35, 45, 80, 75, 55, 65, 30, 40];
+const xAxisData = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+export const barChartOptions: ApexOptions = {
+  chart: {
+    id: 'basic-bar',
+  },
+  title: {
+    text: 'Overview',
+    align: 'left',
+    margin: 0,
+    offsetX: 20,
+    offsetY: 20,
+    floating: false,
+    style: {
+      fontSize: '22px',
+      fontWeight: 500,
+      fontFamily: 'Roboto',
+      color: 'black',
+    },
+  },
+  subtitle: {
+    text: 'Monthly Earning',
+    align: 'left',
+    margin: 0,
+    offsetX: 22,
+    offsetY: 50,
+    floating: false,
+    style: {
+      fontSize: '12px',
+      fontWeight: 400,
+      fontFamily: 'Roboto',
+      color: '#717171',
+    },
+  },
+  plotOptions: {
+    bar: {
+      borderRadius: 10,
+      dataLabels: { position: 'none' },
+    },
+  },
+  xaxis: {
+    categories: xAxisData,
+    position: 'bottom',
+    axisBorder: { show: false },
+    axisTicks: { show: false },
+  },
+  yaxis: {
+    axisBorder: { show: false },
+    axisTicks: { show: false },
+    labels: { show: false },
+  },
+  tooltip: {
+    followCursor: true,
+    theme: 'dark',
+    // any from APEX CHART SPEC
+    custom: function ({ series, seriesIndex, dataPointIndex }: any) {
+      return (
+        '<div class="arrow_box">' +
+        '<span>' +
+        '🡭' +
+        '  ' +
+        series[seriesIndex][dataPointIndex] +
+        '%' +
+        '</span>' +
+        '</div>'
+      );
+    },
+  },
+  dataLabels: { enabled: false },
+  colors: ['#EFF4FF'],
+  grid: { show: false },
+  states: { hover: { filter: { type: 'none' } } },
+};
+export const chartSeries = [{ data: yAxisData }];
