@@ -1,7 +1,8 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import NavbarItem from './NavbarItem';
 import NavbarUserMenu from './NavbarUserMenu';
+import { useMenu } from 'src/Layout/MenuContext';
 import { default as Logo } from 'src/assets/icons/logo.svg?react';
 import { default as Dashboard } from 'src/assets/icons/dashboard.svg?react';
 import { default as Inventory } from 'src/assets/icons/inventory.svg?react';
@@ -22,7 +23,7 @@ const navbarList = [
 
 const Navbar = () => {
   const location = useLocation();
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const {isOpenMenu, setIsOpenMenu} = useMenu();
   return (
     <div
       className={`${s.nav__bar} ${isOpenMenu ? s.open : ''}`}
