@@ -7,7 +7,7 @@ const DashboardHeader = () => {
   return (
     <div className={s.dashboardHeader}>
       <h2>Hello {currentUser} 👋,</h2>
-      {/* <SearchForm /> */}
+      <SearchForm variant="#ffff" onSearch={() => {}} />
     </div>
   );
 };

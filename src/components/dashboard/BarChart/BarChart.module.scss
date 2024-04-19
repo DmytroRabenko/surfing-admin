@@ -1,4 +1,12 @@
 .barChart {
     flex: 2;
     overflow: hidden;
+    position: relative;
+
+    .absoluteWrapper {
+        z-index: 10;
+        position: absolute;
+        right: 35px;
+        top: 30px;
+    }
 }
