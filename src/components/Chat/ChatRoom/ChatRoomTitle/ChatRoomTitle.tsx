@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import style from './ChatRoomTitle.module.scss'
+import style from './ChatRoomTitle.module.scss';
+import IconUser from '../../IconUser';
 
 interface ChatRoomTitleProps {
-  photoURL: string;
+  photoURL: string | undefined;
   name: string;
 }
 
@@ -13,7 +14,7 @@ const ChatRoomTitle: FC<ChatRoomTitleProps> = ({
 }) =>  (
   <div className={style.title}>
     <div className={style.title__pic}>
-      <img src={photoURL} alt={name} className={style.title__img} />
+      <IconUser photoURL={photoURL} name={name} />
     </div>
     <span className={style.title__name}>{name}</span>
   </div>

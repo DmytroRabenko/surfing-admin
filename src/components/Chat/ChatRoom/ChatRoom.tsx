@@ -21,7 +21,7 @@ const ChatRoom: FC<ChatRoomProps> = () => {
     <div className={style.chatRoom}>
       <div className={style.chatRoom__header}>
         <div className={style.chatRoom__title}>
-          <ChatRoomTitle photoURL="/images/chat/avatar.jpg" name="Peter Jones"/>
+          <ChatRoomTitle photoURL={users[1].photoURL} name={users[1].name}/>
         </div>
         <ul className={style.chatRoom__nav}>
           <li className={style.chatRoom__nav_item}>
@@ -33,7 +33,7 @@ const ChatRoom: FC<ChatRoomProps> = () => {
         </ul>
       </div>
       <div className={style.chatRoom__main}>
-        <ChatRoomMessages messages={data} user={users[0]}/>
+        <ChatRoomMessages messages={data} user={users[1]}/>
       </div>
       <div className={style.chatRoom__footer}>
         <ChatRoomControl />

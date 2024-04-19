@@ -1,6 +1,6 @@
 export interface User {
   uid: string;
-  photoURL: string;
+  photoURL?: string;
   name: string;
   lastMessage: string;
   dateLastMassage: string;

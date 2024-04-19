@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
+import ChatRoomNotice from '../ChatRoomNotice';
+
 import { Message, User } from 'src/type/chat';
 
 import style from './ChatRoomMessages.module.scss';
-import ChatRoomNotice from '../ChatRoomNotice';
 
 interface ChatRoomMessagesProps {
   messages: Message[];
@@ -39,22 +40,18 @@ const ChatRoomMessages: FC<ChatRoomMessagesProps> = ({
           >
             <ChatRoomNotice
               message={message}
-              photoURL={(
-                message.isIn &&
-                  (
-                    messages.length === index + 1 ||
-                    checkLastMassage(message, messages[index + 1])
-                  )
-                ) && user.photoURL
-              }
-              name={(
-                message.isIn &&
-                  (
-                    index === 0 ||
-                    checkFirstMassage(message, messages[index - 1])
-                  )
-                ) && user.name
-              }
+              photoURL={user.photoURL}
+              name={user.name}
+              isFirstMessage={Boolean(message.isIn &&
+                (
+                  index === 0 ||
+                  checkFirstMassage(message, messages[index - 1])
+                ))}
+              isLastMessage={Boolean(message.isIn &&
+                (
+                  messages.length === index + 1 ||
+                  checkLastMassage(message, messages[index + 1])
+                ))}
             />
           </li>
         ))}

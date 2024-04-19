@@ -12,7 +12,6 @@ export const data: User[] = [
   },
   {
     "uid": "12346",
-    "photoURL": "/images/chat/avatar2.png",
     "name": "Jane Smith",
     "lastMessage": "Sent you a photo from my vacation!",
     "dateLastMassage": "2024-04-16T22:15:00.000Z",
