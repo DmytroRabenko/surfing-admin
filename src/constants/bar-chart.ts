@@ -17,8 +17,15 @@ const xAxisData = [
 ];
 
 export const barChartOptions: ApexOptions = {
+  dataLabels: { enabled: false },
+  colors: ['#EFF4FF'],
+  grid: { show: false },
+  states: { hover: { filter: { type: 'none' } } },
   chart: {
     id: 'basic-bar',
+    toolbar: { show: false },
+    fontFamily: 'Roboto',
+    redrawOnParentResize: true,
   },
   title: {
     text: 'Overview',
@@ -30,7 +37,6 @@ export const barChartOptions: ApexOptions = {
     style: {
       fontSize: '22px',
       fontWeight: 500,
-      fontFamily: 'Roboto',
       color: 'black',
     },
   },
@@ -44,7 +50,6 @@ export const barChartOptions: ApexOptions = {
     style: {
       fontSize: '12px',
       fontWeight: 400,
-      fontFamily: 'Roboto',
       color: '#717171',
     },
   },
@@ -52,6 +57,7 @@ export const barChartOptions: ApexOptions = {
     bar: {
       borderRadius: 10,
       dataLabels: { position: 'none' },
+      columnWidth: '75%',
     },
   },
   xaxis: {
@@ -66,9 +72,8 @@ export const barChartOptions: ApexOptions = {
     labels: { show: false },
   },
   tooltip: {
-    followCursor: true,
+    followCursor: false,
     theme: 'dark',
-    // any from APEX CHART SPEC
     custom: function ({ series, seriesIndex, dataPointIndex }: any) {
       return (
         '<div class="arrow_box">' +
@@ -82,9 +87,5 @@ export const barChartOptions: ApexOptions = {
       );
     },
   },
-  dataLabels: { enabled: false },
-  colors: ['#EFF4FF'],
-  grid: { show: false },
-  states: { hover: { filter: { type: 'none' } } },
 };
 export const chartSeries = [{ data: yAxisData }];

@@ -6,8 +6,8 @@ const currentUser = 'Maks'; //from store provider
 const DashboardHeader = () => {
   return (
     <div className={s.dashboardHeader}>
-      <div>Hello {currentUser} 👋,</div>
-      <SearchForm />
+      <h2>Hello {currentUser} 👋,</h2>
+      {/* <SearchForm /> */}
     </div>
   );
 };

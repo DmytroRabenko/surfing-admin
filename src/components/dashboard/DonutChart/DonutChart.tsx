@@ -3,22 +3,27 @@ import s from './DonutChart.module.scss';
 import pageStyle from '../../../pages/Dashboard/Dashboard.module.scss';
 import { donutChartOptions, donutData } from 'src/constants/donut-chart';
 
-const combinedClasses = [pageStyle.contentWrapper, s.donutChart];
+const combinedClasses = [pageStyle.contentWrapper__rounded, s.donutChart].join(' ');
 
-const ChartHeader = () => {
+interface ChartHeaderProps {
+  title: string;
+  subtitle: string;
+}
+//
+const ChartHeader = ({ title, subtitle }: ChartHeaderProps) => {
   return (
     <div className={s.chartHeader}>
-      <h2 className={s.chartHeader__title}>Customers</h2>
-      <p className={s.chartHeader__subtitle}>New customers rental</p>
+      <h2 className={s.chartHeader__title}>{title}</h2>
+      <p className={s.chartHeader__subtitle}>{subtitle}</p>
     </div>
   );
 };
 
 const DonutChart = () => {
   return (
-    <div className={combinedClasses.join(' ')}>
-      <ChartHeader />
-      <Chart type="donut" options={donutChartOptions} series={donutData} />
+    <div className={combinedClasses}>
+      <ChartHeader title="Customers" subtitle="New customers rental" />
+      <Chart type="donut" options={donutChartOptions} series={donutData} height={300} />
     </div>
   );
 };

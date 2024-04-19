@@ -13,10 +13,6 @@ const Dashboard = () => {
       <DashboardContainer>
         <DashboardHeader />
         <Statistic />
-        {/* <div className={s.diagramWrapper}>
-          <div style={{ background: 'blue', flex: 1 }}>1</div>
-          <div style={{ background: 'red', flex: 2 }}>1</div>
-        </div> */}
         <div className={s.chartsWrapper}>
           <BarChart />
           <DonutChart />

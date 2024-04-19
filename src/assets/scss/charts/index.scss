@@ -1,17 +1,10 @@
-// move to Bar Chat page {
-
-// }
+@import './../mixins';
 
 .apexcharts-bar-area:hover {
-    fill: #4C74F6;
-}
-
-.apexcharts-toolbar {
-    display: none !important;
+    fill: $chartBarColor;
 }
 
 .arrow_box {
     padding: 5px;
     text-align: center;
-    span {}
 }

@@ -13,6 +13,7 @@ const donutLabels = ['Total New Customers', 'Networking', 'Hiring', 'R&D'];
 export const donutChartOptions: ApexOptions = {
   chart: {
     id: 'basic-donut',
+    fontFamily: 'Roboto',
   },
   labels: donutLabels,
   colors: [donutColors.series1, donutColors.series5, donutColors.series3, donutColors.series2],
@@ -35,13 +36,11 @@ export const donutChartOptions: ApexOptions = {
           name: {
             fontSize: '12px',
             color: '#717171',
-            fontFamily: 'Roboto',
           },
           value: {
             fontSize: '24px',
             color: 'black',
-            fontWeight: 500,
-            fontFamily: 'Roboto',
+            fontWeight: '700',
             formatter(val) {
               return val + '%';
             },

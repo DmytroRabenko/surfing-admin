@@ -4,15 +4,20 @@
     display: flex;
     gap: 35px;
 
+    @include phone {
+        flex-direction: column
+    }
+
     @include tablet {
         flex-direction: column
     }
+
     @include desktop {
         flex-direction: row
     }
 }
 
-.contentWrapper {
+.contentWrapper__rounded {
     padding: 10px;
     background-color: white;
     border-radius: 20px;
