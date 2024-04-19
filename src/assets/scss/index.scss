@@ -32,3 +32,22 @@ main{
   display: flex;
 }
 
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $color-gray2;
+}
+
+*::-webkit-scrollbar-thumb {
+  @include transition_background;
+
+  background-color: $color-light-blue;
+  border-radius: 20px;
+  border: 1px solid $color-gray2;
+
+  &:hover {
+    background-color: $color-blue;
+  }
+}
