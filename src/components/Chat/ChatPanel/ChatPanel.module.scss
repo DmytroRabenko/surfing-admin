@@ -12,10 +12,6 @@
     overflow-y: scroll;
   }
 
-  &__item {
-
-  }
-
   &__info {
     @include flex_block(row, nowrap, flex-start, center, center);
 
@@ -55,7 +51,7 @@
 
     font-size: 14px;
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.42;
     color: $color-white;
 
     background-color: $color-blue;
