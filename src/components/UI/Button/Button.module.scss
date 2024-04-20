@@ -13,12 +13,17 @@
 	vertical-align: baseline;
 	box-sizing: border-box;
 
+  cursor: pointer;
+
 	&:before,
 	&:after {
 		box-sizing: border-box;
 	}
 
-  cursor: pointer;
+  &:disabled {
+    pointer-events: none;
+    opacity: .3;
+  }
 
   &--modColorPrime {
     @include hover;

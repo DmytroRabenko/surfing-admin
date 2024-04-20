@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useRef } from 'react';
 
 import ChatRoomAttachButton from '../ChatRoomAttachButton';
-import ChatRoomSentButton from '../../ChatRoomSentButton';
+import ChatRoomSentButton from '../ChatRoomSentButton';
 
 import style from './ChatRoomControl.module.scss';
 
