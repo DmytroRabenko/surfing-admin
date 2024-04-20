@@ -5,13 +5,14 @@ import ChatRoomTitle from './ChatRoomTitle';
 import ChatRoomMenuButton from './ChatRoomMenuButton';
 import ChatRoomControl from './ChatRoomControl';
 import ChatRoomMessages from './ChatRoomMessages';
+import ChatHeader from '../ChatHeader';
+
 
 import { data } from './data';
 
 import { data as users } from '../../../pages/Chat/data';
 
 import style from './ChatRoom.module.scss';
-
 interface ChatRoomProps {
 
 }
@@ -19,7 +20,7 @@ interface ChatRoomProps {
 const ChatRoom: FC<ChatRoomProps> = () => {
   return (
     <div className={style.chatRoom}>
-      <div className={style.chatRoom__header}>
+      <ChatHeader>
         <div className={style.chatRoom__title}>
           <ChatRoomTitle photoURL={users[1].photoURL} name={users[1].name}/>
         </div>
@@ -31,7 +32,7 @@ const ChatRoom: FC<ChatRoomProps> = () => {
             <ChatRoomMenuButton />
           </li>
         </ul>
-      </div>
+      </ChatHeader>
       <div className={style.chatRoom__main}>
         <ChatRoomMessages messages={data} user={users[1]}/>
       </div>

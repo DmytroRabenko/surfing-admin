@@ -1,5 +1,5 @@
 import ChatRoom from 'src/components/Chat/ChatRoom';
-import UsersList from 'src/components/Chat/UsersList';
+import ChatPanel from 'src/components/Chat/ChatPanel';
 
 import style from './Chat.module.scss';
 
@@ -12,7 +12,7 @@ const Chat = () => {
   return (
     <div className={style.chat}>
       <div className={style.chat__users}>
-        <UsersList contacts={data} selectUser={handlerSelectUser}/>
+        <ChatPanel contacts={data} selectUser={handlerSelectUser}/>
       </div>
       <div className={style.chat__room}>
         <ChatRoom />
