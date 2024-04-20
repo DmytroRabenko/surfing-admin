@@ -8,11 +8,13 @@ import { User } from 'src/type/chat';
 import style from './ChatPanel.module.scss';
 
 interface ChatPanelProps {
+  uid: string;
   contacts: User[];
   selectUser: (uid: string) => void;
 }
 
 const ChatPanel: FC<ChatPanelProps> = ({
+  uid,
   contacts,
   selectUser,
 }) => {
@@ -27,10 +29,10 @@ const ChatPanel: FC<ChatPanelProps> = ({
       <ul className={style.panel__list}>
       {contacts.map(contact => (
         <li key={contact.uid} className={style.panel__item}>
-          <CaptionChatRoom user={contact} selectUser={selectUser} />
+          <CaptionChatRoom user={contact} selectUser={selectUser} uid={uid} />
         </li>
       ))}
-    </ul>
+      </ul>
     </div>
   );
 };

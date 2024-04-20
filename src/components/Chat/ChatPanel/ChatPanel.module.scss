@@ -2,14 +2,17 @@
 @import 'src/assets/scss/mixins';
 
 .panel {
+  @include flex_block(column, nowrap, flex-start);
+
+  height: 100vh;
   background-color: $color-white;
 
   &__list {
-    height: 100vh;
+    flex-grow: 1;
 
     padding: 5px 8px;
 
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__info {

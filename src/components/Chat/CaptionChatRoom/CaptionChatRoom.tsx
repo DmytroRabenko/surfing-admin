@@ -9,16 +9,21 @@ import { User } from 'src/type/chat';
 
 import style from './CaptionChatRoom.module.scss';
 interface UserItemProps {
+  uid: string;
   user: User;
   selectUser: (uid: string) => void;
 }
 
 const CaptionChatRoom: FC<UserItemProps> = ({
+  uid,
   user,
   selectUser,
 }) => {
   return (
-    <div className={`${style.caption} ${user.isOpen ? style.active : ''}`} onClick={() => selectUser(user.uid)}>
+    <div
+      className={`${style.caption} ${user.uid === uid ? style.active : ''}`}
+      onClick={() => selectUser(user.uid)}
+    >
       <div className={style.caption__pic}>
         <IconUser photoURL={user.photoURL} name={user.name} />
       </div>

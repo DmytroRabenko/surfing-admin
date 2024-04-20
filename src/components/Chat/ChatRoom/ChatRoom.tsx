@@ -7,22 +7,23 @@ import ChatRoomControl from './ChatRoomControl';
 import ChatRoomMessages from './ChatRoomMessages';
 import ChatHeader from '../ChatHeader';
 
-
-import { data } from './data';
-
-import { data as users } from '../../../pages/Chat/data';
+import { Message, User } from 'src/type/chat';
 
 import style from './ChatRoom.module.scss';
 interface ChatRoomProps {
-
+  messages: Message[];
+  user: User;
 }
 
-const ChatRoom: FC<ChatRoomProps> = () => {
+const ChatRoom: FC<ChatRoomProps> = ({
+  messages,
+  user
+}) => {
   return (
     <div className={style.chatRoom}>
       <ChatHeader>
         <div className={style.chatRoom__title}>
-          <ChatRoomTitle photoURL={users[1].photoURL} name={users[1].name}/>
+          <ChatRoomTitle photoURL={user.photoURL} name={user.name}/>
         </div>
         <ul className={style.chatRoom__nav}>
           <li className={style.chatRoom__nav_item}>
@@ -34,7 +35,7 @@ const ChatRoom: FC<ChatRoomProps> = () => {
         </ul>
       </ChatHeader>
       <div className={style.chatRoom__main}>
-        <ChatRoomMessages messages={data} user={users[1]}/>
+        <ChatRoomMessages messages={messages} user={user}/>
       </div>
       <div className={style.chatRoom__footer}>
         <ChatRoomControl />
