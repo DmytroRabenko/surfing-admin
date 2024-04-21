@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
+
 import Navbar from 'src/components/Navbar';
+import { MenuProvider } from './MenuContext';
 
 import '../assets/scss/index.scss';
 
@@ -9,10 +11,12 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <div className='wrapper'>
-      <Navbar/>
-      <main>{children}</main>
-    </div>
+    <MenuProvider>
+      <div className="wrapper">
+        <Navbar />
+        <main>{children}</main>
+      </div>
+    </MenuProvider>
   );
 };
 export default MainLayout;
