@@ -1,0 +1,28 @@
+@import "../../../assets/scss/variables";
+.tr {
+    background-color: $color-white;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.05));
+}
+.tr td:not(:nth-child(2)) {
+    text-align: center;
+}
+.tr td:nth-child(2) {
+  text-align: left;
+}
+.tr td {
+    color: $color-text-gray6;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.25;
+    padding: 24px 0;
+}
+.tr:hover {
+    background-color: rgb(243, 247, 254);
+}
+.btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color:inherit;
+}
+
