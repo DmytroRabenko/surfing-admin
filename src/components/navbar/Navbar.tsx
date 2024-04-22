@@ -19,7 +19,7 @@ const navbarList = [
   { name: 'Listings', icon: Listings, to: '/listings' },
   { name: 'Financials & Reports', icon: Finance, to: '/financials' },
   { name: 'Booking calendar', icon: Calendar, to: '/calendar' },
-  { name: 'Messages', icon: Message, to: '/messages' },
+  { name: 'Messages', icon: Message, to: '/chat' },
 ];
 
 const Navbar = () => {
