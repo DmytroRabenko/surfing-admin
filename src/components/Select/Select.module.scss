@@ -13,21 +13,24 @@
         color: $color-text-gray6;
     }
 }
-
-.options {
+.optionContainer {
+    padding-top: 10px;
     position: absolute;
-    bottom: -85px;
+    top: calc(100% + 5px);
     left: -10px;
     width: calc(100% + 20px);
-    padding: 5px 10px;
-    text-align: left;
-    background-color: $color-white;
-    border-radius: 6px;
-    z-index: 1;
-    &__option {
-        padding: 3px 0;
-        &:not(:last-child) {
-            border-bottom: 1px solid $color-gray3;
+    z-index: 2;
+    .options {
+        padding: 5px 10px;
+        text-align: left;
+        background-color: $color-white;
+        border-radius: 6px;
+
+        &__option {
+            padding: 3px 0;
+            &:not(:last-child) {
+                border-bottom: 1px solid $color-gray3;
+            }
         }
     }
 }

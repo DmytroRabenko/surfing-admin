@@ -1,8 +1,8 @@
 import React from 'react';
-import classNames from 'classnames';
 import styles from './Button.module.scss';
 type Props = {
   onClick?: () => void;
+  onMouseLeave?: () => void;
   children: React.ReactNode;
   style?: React.CSSProperties;
   isSelected?: boolean;
@@ -10,11 +10,12 @@ type Props = {
   additionalClass?: string;
 };
 
-function Button({ onClick, style, isSelected, textColor, additionalClass, children }: Props) {
+function Button({ onClick, onMouseLeave, style, isSelected, textColor, children }: Props) {
   return (
     <button
       onClick={onClick}
-      className={classNames(styles.btn, additionalClass ? additionalClass : '')}
+      onMouseLeave={onMouseLeave}
+      className={styles.btn}
       style={
         isSelected
           ? { backgroundColor: 'rgb(76, 116, 246)', color: '#ffffff', ...style }
