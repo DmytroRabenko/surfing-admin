@@ -1,0 +1,120 @@
+@import 'src/assets/scss/variables';
+
+@import 'src/assets/scss/variables';
+
+.calendarBody {
+  position: relative;
+  width: 100%;
+  background-color: $color-white;
+  border-right: $border;
+  // overflow-x: hidden;
+  //overflow-y: auto;
+  // height: calc(100vh - 185px);
+  // overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  //overflow-y: hidden;
+  //overflow-x: auto;
+  //overflow-y: none;
+  /*
+  &::-webkit-scrollbar {
+    display: block;
+  }
+*/
+  .calendarSearch {
+    width: 330px;
+    background-color: $color-white;
+    position: absolute;
+    z-index: 15;
+    border-right: $border;
+    border-left: $border;
+  }
+
+  //header
+  .react-calendar-timeline .rct-calendar-header{
+    border: none;
+    >div{
+      height: 33px!important;
+    }
+  }
+  .react-calendar-timeline .rct-dateHeader-primary{
+    color: $color-black;
+    border-right: none;
+  }
+  .react-calendar-timeline .rct-header-root {
+    background-color: $color-white;
+    color: $color-black;
+    border-bottom: $border;
+  }
+  //react-calendar-timeline .rct-header-root
+  //
+  .react-calendar-timeline .rct-dateHeader{
+    border-bottom: none;
+    border-left: none;
+    background-color: $color-white;
+  }
+  .rct-sidebar {
+    left: 0;
+  }
+  .rct-sidebar-row {
+    background-color: $color-white !important;
+  }
+  .rct-sidebar-row-odd {
+    background-color: $color-white !important;
+  }
+
+  .rct-item {
+    background-color: rgba(93, 181, 93, 0.5) !important;
+    border: none !important;
+  }
+
+  //left bar
+  .react-calendar-timeline .rct-sidebar {
+    border-right: $border ;
+    border-left: $border ;
+  }
+
+  .react-calendar-timeline .rct-sidebar .rct-sidebar-row {
+    border-bottom: $border;
+    padding-left: 55px;
+    background-image: url('../../../assets/icons/calendar-surf.svg')!important;
+    background-repeat: no-repeat!important;
+    background-position: 25px 18px !important;
+  }
+
+  .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+    background-color: $color-white;
+    border-bottom: $border;
+    color: rgba(34, 34, 34, 1);
+  }
+
+  //main
+  //горизонтальна лінія
+  .react-calendar-timeline .rct-horizontal-lines .rct-hl-even,
+  .react-calendar-timeline .rct-horizontal-lines .rct-hl-odd {
+    border-bottom: $border;
+    background-color: $color-white;
+    background-color: rgba(0, 0, 0, 0.02);
+
+  }
+  //вертикальна лінія
+  .react-calendar-timeline .rct-vertical-lines .rct-vl {
+    border-left: $border;
+  }
+  .react-calendar-timeline .rct-vertical-lines .rct-vl.rct-day-0 {
+    background-color: inherit;
+  }
+}
+
+
+//Відмітка поточного часу
+.rct-scroll {
+  >div:first-child{
+    >div:first-child{
+      background-color: $color-blue!important; /* Червоний колір */
+     // height: 2px; /* Висота лінії */
+    }
+   
+  }
+  
+}

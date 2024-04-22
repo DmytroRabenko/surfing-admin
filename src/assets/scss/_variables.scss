@@ -8,18 +8,19 @@ $color-red: rgba(255, 89, 89, 1);
 $color-light-blue: rgba(224, 238, 254, 1);
 $color-gray2: rgba(249, 249, 249, 1);
 $color-gray3:  rgba(241, 241, 241, 1);
-
 $color-text-gray: rgba(126, 126, 126, 1);
 $color-text-gray2: rgba(117, 117, 117, 1);
 $color-text-gray3: rgba(51, 51, 51, 1);
 $color-text-gray4: rgba(145, 151, 179, 1);
-
 $color-text-gray5:  rgba(49, 49, 49, 1);
 $color-text-gray6: rgba(113, 113, 113, 1);
+$color-text-blue: rgba(74, 121, 247, 1);
 
 $color-hover: $color-blue;
 
-$bg: #f3f3f3;
+$bg: rgba(243, 243, 243, 1);
+
+$border: 1px solid rgba(241, 241, 241, 1);
 
 $transition: all linear .3s;
 

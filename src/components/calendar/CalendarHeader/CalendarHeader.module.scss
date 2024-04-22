@@ -1,0 +1,60 @@
+@import 'src/assets/scss/variables';
+
+.calendarHeader {
+  width: 100%;
+  height: 77px;
+  background-color: $color-white;
+  border: 1px solid rgba(241, 241, 241, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 52px 16px 38px;
+  z-index: 20;
+  border: $border;
+  .calendarHeader__filters{
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    color: rgba(83, 87, 100, 1);
+    z-index: 20;
+    >div:nth-last-child(1){
+        color: $color-text-blue;
+    }
+    
+  }
+  .calendarHeader__buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .activeDate {
+      width: 139px;
+      height: 39px;
+      border: $border;
+      border-radius: 3px;
+      color: rgba(83, 87, 100, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    > button {
+      cursor: pointer;
+      width: 39px;
+      height: 39px;
+      border: $border;
+      border-radius: 3px;
+      background-color: $color-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.nextDate {
+        transform: rotate(-180deg);
+      }
+    }
+    .today {
+      width: 87px;
+      border: 1px solid $color-text-blue;
+      color: $color-text-blue;
+      font-weight: 500;
+    }
+  }
+}
