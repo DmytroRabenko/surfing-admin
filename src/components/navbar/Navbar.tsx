@@ -12,6 +12,7 @@ import { default as Calendar } from 'src/assets/icons/calendar.svg?react';
 import { default as Message } from 'src/assets/icons/message.svg?react';
 import s from './navbar.module.scss';
 
+
 const navbarList = [
   { name: 'Dashboard', icon: Dashboard, to: '/' },
   { name: 'Inventory', icon: Inventory, to: '/inventory' },
