@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavbarItem from './NavbarItem';
 import NavbarUserMenu from './NavbarUserMenu';
-import s from './Navbar.module.scss';
+import s from './navbar.module.scss';
 import { default as Logo } from "src/assets/icons/logo.svg?react";
 
 const navbarList = [
