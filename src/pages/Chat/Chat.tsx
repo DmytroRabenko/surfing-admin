@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import ChatRoom from 'src/components/Chat/ChatRoom';
 import ChatPanel from 'src/components/Chat/ChatPanel';
