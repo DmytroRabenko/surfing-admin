@@ -54,6 +54,9 @@ const RentalTable = () => {
 
   const handleTermChange = (selectedTerm: string) => {
     setPeriodRange(selectedTerm);
+    
+    // Fix deploy error
+    console.log(periodRange);
   };
 
   const handleSearch = (query: string) => {
