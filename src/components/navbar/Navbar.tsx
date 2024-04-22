@@ -10,7 +10,7 @@ import { default as Listings } from 'src/assets/icons/listings.svg?react';
 import { default as Finance } from 'src/assets/icons/finance.svg?react';
 import { default as Calendar } from 'src/assets/icons/calendar.svg?react';
 import { default as Message } from 'src/assets/icons/message.svg?react';
-import s from './Navbar.module.scss';
+import s from './navbar.module.scss';
 
 const navbarList = [
   { name: 'Dashboard', icon: Dashboard, to: '/' },
