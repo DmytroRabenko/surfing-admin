@@ -1,0 +1,21 @@
+@import "../../assets/scss/variables";
+
+.inventory {
+    padding: 30px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    gap: 10px;
+}
+.equipmentBtns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}

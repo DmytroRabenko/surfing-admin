@@ -1,0 +1,33 @@
+@import "../../assets/scss/variables";
+.container {
+    position: relative;
+}
+.select {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    &__activeOption {
+        font-size: 12px;
+        line-height: 1.25;
+        color: $color-text-gray6;
+    }
+}
+
+.options {
+    position: absolute;
+    bottom: -85px;
+    left: -10px;
+    width: calc(100% + 20px);
+    padding: 5px 10px;
+    text-align: left;
+    background-color: $color-white;
+    border-radius: 6px;
+    z-index: 1;
+    &__option {
+        padding: 3px 0;
+        &:not(:last-child) {
+            border-bottom: 1px solid $color-gray3;
+        }
+    }
+}

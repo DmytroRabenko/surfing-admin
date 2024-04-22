@@ -9,7 +9,7 @@ interface ChartHeaderProps {
   title: string;
   subtitle: string;
 }
-//
+
 const ChartHeader = ({ title, subtitle }: ChartHeaderProps) => {
   return (
     <div className={s.chartHeader}>
@@ -23,7 +23,13 @@ const DonutChart = () => {
   return (
     <div className={combinedClasses}>
       <ChartHeader title="Customers" subtitle="New customers rental" />
-      <Chart type="donut" options={donutChartOptions} series={donutData} height={300} />
+      <Chart
+        type="donut"
+        options={donutChartOptions}
+        series={donutData}
+        height={300}
+        // width={300}
+      />
     </div>
   );
 };

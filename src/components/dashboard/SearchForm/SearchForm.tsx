@@ -3,6 +3,7 @@ import s from './SearchForm.module.scss';
 
 interface SearchFormProps {
   onSearch: (query: string) => void;
+  // TEMP SOLUTION 
   variant: '#0000' | '#ffff' | '#F3F3F3';
 }
 const SearchForm = ({ onSearch, variant }: SearchFormProps) => {

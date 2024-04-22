@@ -1,7 +1,7 @@
-@import './../mixins';
 
 .apexcharts-bar-area:hover {
-    fill: $chartBarColor;
+    // MOVE ro Vars
+    fill: #4C74F6;
 }
 
 .arrow_box {

@@ -1,0 +1,38 @@
+@import "../../../assets/scss/variables";
+.container {
+    overflow: hidden;
+    border-radius: 6px;
+    border: 0.5px solid $color-gray3;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+}
+
+.table {
+    position: relative;
+    width: 100%;
+    background-color: $color-white;
+    border-collapse: collapse;
+}
+th {
+    color: $color-text-gray6;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.25;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+th:first-child {
+    text-align: left;
+    width: 51px;
+}
+th:nth-child(2) {
+    text-align: left;
+}
+tr.header {
+    position: sticky;
+    top: 0;
+    background-color: rgb(249, 249, 249);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    z-index: 1;
+}

@@ -21,9 +21,10 @@ a {
 
 body {
   font-family: 'Roboto', sans-serif;
-  color: rgba(0, 0, 0, 1);
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.15;
+  color: rgba(0, 0, 0, 1);
 }
 
 main {
@@ -34,4 +35,24 @@ main {
 
 .wrapper {
   display: flex;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: $color-gray2;
+}
+
+*::-webkit-scrollbar-thumb {
+  @include transition_background;
+
+  background-color: $color-light-blue;
+  border-radius: 20px;
+  border: 1px solid $color-gray2;
+
+  &:hover {
+    background-color: $color-blue;
+  }
 }

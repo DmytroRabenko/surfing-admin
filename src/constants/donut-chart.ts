@@ -14,6 +14,7 @@ export const donutChartOptions: ApexOptions = {
   chart: {
     id: 'basic-donut',
     fontFamily: 'Roboto',
+    // redrawOnParentResize: false,
   },
   labels: donutLabels,
   colors: [donutColors.series1, donutColors.series5, donutColors.series3, donutColors.series2],

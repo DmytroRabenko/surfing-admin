@@ -1,0 +1,17 @@
+@import "../../../assets/scss/variables";
+@import '../Inventory.module.scss';
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7.5px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: $color-white;
+    font-size: 12px;
+    line-height: 1.25;
+    color: $color-text-gray6;
+    cursor: pointer;
+}
+
