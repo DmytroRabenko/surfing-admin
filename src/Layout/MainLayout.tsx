@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
+
 import Navbar from 'src/components/navbar';
 import { MenuProvider } from './MenuContext';
+
 import '../assets/scss/index.scss';
 
 type MainLayoutProps = {
