@@ -1,1 +1,2 @@
-export * from './StatisticItem'
+import { StatisticItem } from './StatisticItem';
+export default StatisticItem;

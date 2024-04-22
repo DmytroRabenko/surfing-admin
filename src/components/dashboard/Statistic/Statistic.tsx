@@ -1,6 +1,6 @@
 import s from './Statistic.module.scss';
 
-import { StatisticItem } from '../StatisticItem';
+import  StatisticItem  from '../StatisticItem';
 
 import moneyReceive from '../../../assets/icons/money-receive.svg';
 import walletMoney from '../../../assets/icons/wallet-money.svg';

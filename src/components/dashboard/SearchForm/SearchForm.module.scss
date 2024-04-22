@@ -1,0 +1,33 @@
+.searchForm {
+    border-radius: 10px;
+    overflow: hidden;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 5px #007bff4a;
+    }
+
+    &__input {
+        background: transparent;
+        border: none;
+        padding: 12px;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 5px #007bff4a inset;
+        }
+    }
+
+    // DONT WORK?????
+    &.grey {
+        background: #F3F3F3;
+    }
+
+    &.bright {
+        background: white;
+    }
+
+    &.dark {
+        background: black;
+    }
+}

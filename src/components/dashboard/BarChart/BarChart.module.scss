@@ -1,0 +1,14 @@
+.barChart {
+    flex: 2;
+    // for correct sidebar size transform
+    overflow: hidden;
+    // For dropdawn menu
+    position: relative;
+
+    .absoluteWrapper {
+        z-index: 10;
+        position: absolute;
+        right: 35px;
+        top: 30px;
+    }
+}
