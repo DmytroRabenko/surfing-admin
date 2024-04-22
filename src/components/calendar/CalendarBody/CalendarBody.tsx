@@ -2,11 +2,12 @@ import Timeline, { TodayMarker } from 'react-calendar-timeline';
 import 'react-calendar-timeline/lib/Timeline.css';
 import moment from 'moment';
 import CalendarSearch from '../CalendarSearch/CalendarSearch';
+import CustomTimeline from '../CustomTimeline';
 import './CalendarBody.scss';
 
 const CalendarGrid = () => {
   const data = {
-    groups : [
+    groups: [
       { id: 1, title: 'Surf 1' },
       { id: 2, title: 'Surf 2' },
       { id: 3, title: 'Surf 3' },
@@ -20,7 +21,7 @@ const CalendarGrid = () => {
       { id: 11, title: 'Surf 11' },
       { id: 12, title: 'Surf 12' },
     ],
-    items : [
+    items: [
       {
         id: 1,
         group: 1,
@@ -134,6 +135,9 @@ const CalendarGrid = () => {
       >
         <TodayMarker date={moment().toDate()} />
       </Timeline>
+      <CustomTimeline>
+        <TodayMarker date={moment().toDate()} />
+      </CustomTimeline>
     </div>
   );
 };
