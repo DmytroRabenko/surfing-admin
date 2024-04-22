@@ -14,13 +14,13 @@ import FilterIcon from '../../assets/icons/filter.svg?react';
 import PlusIcon from '../../assets/icons/plus.svg?react';
 
 const sortingOptions = ['name', 'price', 'availability'];
-const filterOptions = ['a', 'b', 'c'];
+const filterOptions = ['a', 'b', 'c', 'd', 'f', 'as', 'asd'];
 const equipmentBtns = ['Surfboards', 'Wetsuits', 'Fins', 'Leashes', 'All'];
 
 type Props = {};
 
 function Inventory({}: Props) {
-  const { colorBlue,colorWhite } = vars;
+  const { colorBlue, colorWhite } = vars;
   const [activeEquipBtn, setActiveEquipBtn] = useState('All');
 
   return (
@@ -29,12 +29,8 @@ function Inventory({}: Props) {
         <Search />
         <div className={styles.options}>
           <PositionSwitcher />
-          <Button>
-            <Select name="Sort by" icon={SortIcon} options={sortingOptions} />
-          </Button>
-          <Button>
-            <Select name="Filter" icon={FilterIcon} options={filterOptions} />
-          </Button>
+          <Select name="Sort by" icon={SortIcon} options={sortingOptions} />
+          <Select name="Filter" icon={FilterIcon} options={filterOptions} />
           <Button style={{ backgroundColor: colorBlue }} textColor={colorWhite}>
             <PlusIcon width={11} height={11} />
             Add Equipment
