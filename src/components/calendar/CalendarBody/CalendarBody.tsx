@@ -135,9 +135,7 @@ const CalendarGrid = () => {
       >
         <TodayMarker date={moment().toDate()} />
       </Timeline>
-      <CustomTimeline>
-        <TodayMarker date={moment().toDate()} />
-      </CustomTimeline>
+      <CustomTimeline />
     </div>
   );
 };

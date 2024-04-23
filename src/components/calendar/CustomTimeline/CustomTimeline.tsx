@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import { useState } from 'react';
 import moment from 'moment';
-
 import Timeline, { TodayMarker } from 'react-calendar-timeline';
 
 import generateFakeData from './generate-fake-data';
 
-var keys = {
+const keys = {
   groupIdKey: 'id',
   groupTitleKey: 'title',
   groupRightTitleKey: 'rightTitle',
@@ -18,35 +17,32 @@ var keys = {
   groupLabelKey: 'title',
 };
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const { groups, items } = generateFakeData();
+  const defaultTimeStart = moment().startOf('day').toDate();
+  const defaultTimeEnd = moment().startOf('day').add(1, 'day').toDate();
 
-    const { groups, items } = generateFakeData();
-    const defaultTimeStart = moment().startOf('day').toDate();
-    const defaultTimeEnd = moment().startOf('day').add(1, 'day').toDate();
+  const [state, setState] = useState({
+    groups,
+    items,
+    defaultTimeStart,
+    defaultTimeEnd,
+  });
 
-    this.state = {
-      groups,
-      items,
-      defaultTimeStart,
-      defaultTimeEnd,
-    };
-  }
-
-  handleItemMove = (itemId, dragTime, newGroupOrder) => {
-    const { items, groups } = this.state;
-
+  const handleItemMove = (itemId: string, dragTime: number, newGroupOrder: number) => {
+    const { items, groups } = state;
     const group = groups[newGroupOrder];
 
-    this.setState({
+    setState({
+      ...state,
       items: items.map(item =>
         item.id === itemId
-          ? Object.assign({}, item, {
+          ? {
+              ...item,
               start: dragTime,
               end: dragTime + (item.end - item.start),
               group: group.id,
-            })
+            }
           : item
       ),
     });
@@ -54,16 +50,18 @@ export default class App extends Component {
     console.log('Moved', itemId, dragTime, newGroupOrder);
   };
 
-  handleItemResize = (itemId, time, edge) => {
-    const { items } = this.state;
+  const handleItemResize = (itemId: string, time: number, edge: string) => {
+    const { items } = state;
 
-    this.setState({
+    setState({
+      ...state,
       items: items.map(item =>
         item.id === itemId
-          ? Object.assign({}, item, {
+          ? {
+              ...item,
               start: edge === 'left' ? time : item.start,
               end: edge === 'left' ? item.end : time,
-            })
+            }
           : item
       ),
     });
@@ -71,29 +69,26 @@ export default class App extends Component {
     console.log('Resized', itemId, time, edge);
   };
 
-  render() {
-    const { groups, items, defaultTimeStart, defaultTimeEnd } = this.state;
+  return (
+    <Timeline
+      groups={state.groups}
+      items={state.items}
+      keys={keys}
+      itemTouchSendsClick={false}
+      stackItems={false}
+      itemHeightRatio={0.75}
+      canMove={true}
+      canResize={'both'}
+      defaultTimeStart={state.defaultTimeStart}
+      defaultTimeEnd={state.defaultTimeEnd}
+      onItemMove={handleItemMove}
+      onItemResize={handleItemResize}
+      sidebarWidth={330}
+      lineHeight={56}
+    >
+      <TodayMarker date={moment().toDate()} />
+    </Timeline>
+  );
+};
 
-    return (
-      <Timeline
-        groups={groups}
-        items={items}
-        keys={keys}
-        fullUpdate
-        itemTouchSendsClick={false}
-        stackItems={false}
-        itemHeightRatio={0.75}
-        canMove={true}
-        canResize={'both'}
-        defaultTimeStart={defaultTimeStart}
-        defaultTimeEnd={defaultTimeEnd}
-        onItemMove={this.handleItemMove}
-        onItemResize={this.handleItemResize}
-        sidebarWidth={330}
-        lineHeight={56}
-      >
-        <TodayMarker date={moment().toDate()} />
-      </Timeline>
-    );
-  }
-}
+export default App;
