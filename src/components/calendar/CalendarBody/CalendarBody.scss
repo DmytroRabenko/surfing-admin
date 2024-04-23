@@ -98,19 +98,13 @@
     .rct-vertical-lines {
       .rct-vl {
         border-left: $border;
+        background-color: rgba(0, 0, 0, 0.01)!important;;
       }
       //відмітка неділя вихідний
-
       .rct-vl.rct-day-0,
       .rct-vl.rct-day-6 {
-        background-color: inherit;
-       // background-color: rgba(0, 0, 0, 0.02);
+        background-color: rgba(0, 0, 0, 0.01)!important;;
       }
-      /*
-    .rct-vl.rct-day-0 {
-      background-color: $color-light-blue;
-    }
-    */
     }
   }
 }

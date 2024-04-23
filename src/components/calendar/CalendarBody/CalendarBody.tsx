@@ -145,8 +145,8 @@ const CalendarBody = ({ visibleTimeStart, visibleTimeEnd, handleTimeChange}:Cale
         rightSidebarWidth={0} //ширина правого меню
         lineHeight={56}       //висота строки
         itemHeightRatio={1}   //висота заброньованого планки
-        minZoom={1000 * 60 * 60}
-        maxZoom={1000 * 60 * 60 *24 * 7}
+        minZoom={1000 * 60 * 60 * 24}
+        maxZoom={1000 * 60 * 60 * 24 * 7}
         canMove
         traditionalZoom
         onTimeChange={handleTimeChange}
