@@ -1,27 +1,45 @@
 import { useState } from 'react';
 import moment from 'moment';
 import CalendarHeader from 'src/components/calendar/CalendarHeader/CalendarHeader';
-import s from './Calendar.module.scss';
 import CalendarBody from 'src/components/calendar/CalendarBody/CalendarBody';
 
+import s from './Calendar.module.scss';
 const Calendar = () => {
-  const formattedActiveDate = moment().format('MMM D, YYYY');
-  const [activeDate, setActiveDate] = useState(formattedActiveDate);
+  //змінні перемикання поточної дати
+  const [currentDate, setCurrentDate] = useState(moment());
+  const [visibleTimeStart, setVisibleTimeStart] = useState(moment().add(-12, 'hour'));
+  const [visibleTimeEnd, setVisibleTimeEnd] = useState(moment().add(36, 'hour'));
+  //Змінні сортування та фільтрації
   const [areaValue, setAreaValue] = useState<number | null>(null);
   const [tagsValue, setTagsValue] = useState<number | null>(null);
   const [sortValue, setSortValue] = useState<number | null>(null);
   console.log(`area: ${areaValue}, tags: ${tagsValue}, sort: ${sortValue}`);
 
-  // Функції для фільтрації та сортування
+  // Функції перемикання активної дати
   const handlePrevDate = () => {
-    setActiveDate(prevDate => moment(prevDate).subtract(1, 'day').format('MMM D, YYYY'));
+    const newDate = currentDate.clone().subtract(1, 'day');
+    setCurrentDate(newDate);
+    setVisibleTimeStart(newDate.clone().add(-12, 'hour'));
+    setVisibleTimeEnd(newDate.clone().add(36, 'hour'));
   };
   const handleNextDate = () => {
-    setActiveDate(prevDate => moment(prevDate).add(1, 'day').format('MMM D, YYYY'));
+    const newDate = currentDate.clone().add(1, 'day');
+    setCurrentDate(newDate);
+    setVisibleTimeStart(newDate.clone().add(-12, 'hour'));
+    setVisibleTimeEnd(newDate.clone().add(36, 'hour'));
   };
   const handleCurrentDate = () => {
-    setActiveDate(moment().format('MMM D, YYYY'));
+    setCurrentDate(moment());
+    setVisibleTimeStart(moment(moment().add(-12, 'hour')));
+    setVisibleTimeEnd(moment().add(36, 'hour'));
   };
+  //функція для роботи scroll
+  const handleTimeChange = (visibleTimeStart: number, visibleTimeEnd: number) => {
+    setVisibleTimeStart(moment(visibleTimeStart));
+    setVisibleTimeEnd(moment(visibleTimeEnd));
+  };
+
+  // Функції фільтрації та сортування
   const handleAreaValue = (id: number) => {
     setAreaValue(id);
   };
@@ -35,7 +53,7 @@ const Calendar = () => {
   return (
     <div className={s.calendar}>
       <CalendarHeader
-        activeDate={activeDate}
+        currentDate={currentDate}
         handlePrevDate={handlePrevDate}
         handleNextDate={handleNextDate}
         handleCurrentDate={handleCurrentDate}
@@ -43,7 +61,11 @@ const Calendar = () => {
         handleTagsValue={handleTagsValue}
         handleSortValue={handleSortValue}
       />
-      <CalendarBody />
+      <CalendarBody
+        visibleTimeStart={visibleTimeStart}
+        visibleTimeEnd={visibleTimeEnd}
+        handleTimeChange={handleTimeChange}
+      />
     </div>
   );
 };

@@ -1,8 +1,10 @@
+import {Moment} from 'moment';
+import DropdownList from 'src/components/UI/DropDownList';
 import { default as Chevron } from 'src/assets/icons/calendar-chevron.svg?react';
 import { default as Location } from 'src/assets/icons/location.svg?react';
 import { default as Tags } from 'src/assets/icons/tags.svg?react';
 import { default as Sort } from 'src/assets/icons/calendar-sort.svg?react';
-import DropdownList from 'src/components/UI/DropDownList';
+
 
 import s from './CalendarHeader.module.scss';
 interface DataType {
@@ -10,7 +12,7 @@ interface DataType {
   id: number;
 }
 interface CalendarHeaderProps {
-  activeDate: string;
+  currentDate: Moment;
   handlePrevDate: () => void;
   handleNextDate: () => void;
   handleCurrentDate: () => void;
@@ -44,7 +46,7 @@ const sortList: DataType[] = [
 ];
 
 const CalendarHeader = ({
-  activeDate,
+  currentDate,
   handlePrevDate,
   handleNextDate,
   handleCurrentDate,
@@ -52,6 +54,7 @@ const CalendarHeader = ({
   handleTagsValue,
   handleSortValue,
 }: CalendarHeaderProps) => {
+  const currentDateValue = currentDate.format('MMM D, YYYY');
   return (
     <div className={s.calendarHeader}>
       <div className={s.calendarHeader__filters}>
@@ -71,7 +74,7 @@ const CalendarHeader = ({
         <button className={s.prevDate} onClick={handlePrevDate}>
           <Chevron />
         </button>
-        <div className={s.activeDate}>{activeDate}</div>
+        <div className={s.activeDate}>{currentDateValue}</div>
         <button className={s.nextDate} onClick={handleNextDate}>
           <Chevron />
         </button>
