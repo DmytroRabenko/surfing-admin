@@ -12,22 +12,11 @@
   background-color: $color-white;
   border-right: $border;
   .calendarBody__calendarSearch {
-    width: 330px;
     background-color: $color-white;
-    position: absolute;
     z-index: 15;
     border-right: $border;
     border-left: $border;
   }
-  /*
-  .calendarBody__months {
-    position: absolute;
-    left: 345px;
-    z-index: 15;
-    margin-top: 12px;
-    font-size: 16px;
-  }
-  */
   //Календар
   .react-calendar-timeline {
     //header
