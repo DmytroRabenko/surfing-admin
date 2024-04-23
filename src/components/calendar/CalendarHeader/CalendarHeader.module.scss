@@ -17,10 +17,6 @@
     gap: 25px;
     color: rgba(83, 87, 100, 1);
     z-index: 20;
-    >div:nth-last-child(1){
-        color: $color-text-blue;
-    }
-    
   }
   .calendarHeader__buttons {
     display: flex;
@@ -46,14 +42,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: $transition;
+      &:hover{
+        color: $color-text-blue;
+        border: 1px solid $color-text-blue;
+      }
       &.nextDate {
         transform: rotate(-180deg);
       }
     }
     .today {
       width: 87px;
-      border: 1px solid $color-text-blue;
-      color: $color-text-blue;
       font-weight: 500;
     }
   }

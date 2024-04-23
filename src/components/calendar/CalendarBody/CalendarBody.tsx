@@ -151,11 +151,11 @@ const CalendarBody = ({
         minZoom={1000 * 60 * 60 * 24}
         maxZoom={1000 * 60 * 60 * 24 * 7}
         canMove={false} //можливість перетягування
+        canResize={false}//можливість розтягувати
         itemTouchSendsClick
         traditionalZoom
         onItemSelect={(item, el, time)=> console.log(item, el, time)}
         onTimeChange={handleTimeChange}
-
       >
         <TodayMarker date={moment().toDate()} interval={600000} />
         <TimelineHeaders>

@@ -19,6 +19,19 @@
   }
   //Календар
   .react-calendar-timeline {
+    //скролл для блоку   потестити
+    .rct-outer{
+      height: calc(100vh - 145px)!important;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .rct-scroll{  
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
     //header
     .rct-calendar-header {
       border: none;
