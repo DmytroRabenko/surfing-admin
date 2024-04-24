@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
 @import '_variables';
 @import '_mixins';
-@import './charts';
-
 
 * {
   padding: 0;
@@ -10,11 +9,10 @@
   box-sizing: border-box;
 }
 
-ul {
+ul{
   list-style: none;
 }
-
-a {
+a{
   text-decoration: none;
   color: inherit;
 }
@@ -23,14 +21,14 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.15;
-  color: rgba(0, 0, 0, 1);
+  color:  rgba(0, 0, 0, 1);
 }
 
-main {
-  flex: 1;
-  background: $bg;
-  overflow-y: auto;
+main{
+    flex: 1;
+    background: $bg;
+    overflow-y: auto;
+    height: 100vh;
 }
 
 .wrapper {
