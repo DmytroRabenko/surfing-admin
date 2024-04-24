@@ -169,7 +169,8 @@ const CalendarBody = ({
             }}
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
-          <DateHeader/>
+          <DateHeader />
+          
         </TimelineHeaders>
       </Timeline>
     </div>
