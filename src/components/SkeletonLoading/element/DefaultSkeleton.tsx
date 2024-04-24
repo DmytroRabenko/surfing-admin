@@ -1,16 +1,18 @@
-import { FC } from 'react';
+import { CSSProperties, FC } from 'react';
 
 import SurfIcon from 'src/assets/icons/surf.svg?react';
 
-import style from '../SkeletonLoading.module.scss';
+import styles from '../SkeletonLoading.module.scss';
 
 interface DefaultSkeletonProps {
-
+  style?: CSSProperties;
 }
 
-const DefaultSkeleton: FC<DefaultSkeletonProps> = () => {
+const DefaultSkeleton: FC<DefaultSkeletonProps> = ({
+  style,
+}) => {
   return (
-    <div className={`${style.skeleton} ${style['skeleton--img']}`}>
+    <div className={`${styles.skeleton} ${styles['skeleton--img']}`} style={style}>
       <SurfIcon width="30px" height="30px"/>
     </div>
   );

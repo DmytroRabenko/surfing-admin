@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { CSSProperties, FC, ReactNode } from 'react';
 
 import TextSkeleton from './element/TextSkeleton';
 import ImageSkeleton from './element/ImageSkeleton';
@@ -12,6 +12,7 @@ interface SkeletonLoadingProps {
   count?: number;
   isLoading: boolean;
   children: ReactNode;
+  style?: CSSProperties;
 }
 
 const SkeletonLoading: FC<SkeletonLoadingProps> = ({
@@ -19,6 +20,7 @@ const SkeletonLoading: FC<SkeletonLoadingProps> = ({
   count = 1,
   isLoading,
   children,
+  style,
 }) => {
   if (isLoading) {
     switch (type) {
@@ -29,7 +31,7 @@ const SkeletonLoading: FC<SkeletonLoadingProps> = ({
       case 'list':
         return <ListSkeleton count={count} />;
       default:
-        return <DefaultSkeleton/>;;
+        return <DefaultSkeleton style={style}/>;;
     }
   }
   return <>{ children }</>
