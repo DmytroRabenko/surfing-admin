@@ -70,10 +70,16 @@
     }
     //активна планка
     .rct-item {
+      position: relative;
       background-color: rgba(93, 181, 93, 0.5) !important;
       border: none !important;
       color: $color-black !important;
-      overflow: hidden;
+      clip-path: polygon(
+        0 1px,
+        calc(100% - 44px) 1px,
+        calc(100% - 1px) calc(100% - 1px),
+        0 calc(100% - 1px)
+      );
     }
 
     .rct-item:hover::after {
