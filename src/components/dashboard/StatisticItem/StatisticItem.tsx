@@ -1,7 +1,10 @@
+import { useEffect, useState } from 'react';
+
 import s from './StatisticItem.module.scss';
 
 import arrowUp from '../../../assets/icons/arrow-up-stat.svg';
 import arrowDown from '../../../assets/icons/arrow-down-stat.svg';
+import SkeletonLoading from 'src/components/SkeletonLoading';
 
 interface Props {
   imgPath: string;
@@ -15,8 +18,19 @@ interface Props {
 export const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }: Props) => {
   const positiveStat = percent > 0;
 
+//-----------------delete SkeletonLoading temporarily --------------
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 20000);
+  }, []);
+//-----------------delete SkeletonLoading temporarily --------------
+
+
   return (
-    <>
+    <SkeletonLoading isLoading={isLoading}>
       <div className={s.item}>
         <div className={s.item__imgContainer}>
           <img className={s.item__img} src={imgPath} alt={imgAlt} />
@@ -35,6 +49,6 @@ export const StatisticItem = ({ imgPath, imgAlt, title, count, percent, period }
           </div>
         </div>
       </div>
-    </>
+    </SkeletonLoading>
   );
 };
