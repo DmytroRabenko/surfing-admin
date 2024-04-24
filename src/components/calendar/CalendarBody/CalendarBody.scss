@@ -73,27 +73,60 @@
       background-color: rgba(93, 181, 93, 0.5) !important;
       border: none !important;
       color: $color-black !important;
+      overflow: hidden;
     }
+
+    .rct-item:hover::after {
+      content: attr(data-info);
+      position: absolute !important;
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding-left: 5px;
+      color: $color-black;
+      background-color: rgba(93, 181, 93, 1) !important;
+      text-wrap: nowrap;
+    }
+
     //горизонтальна лінія
     .rct-horizontal-lines {
       .rct-hl-even,
       .rct-hl-odd {
         border-bottom: $border;
-        background-color: rgba(0, 0, 0, 0.02)!important;
+        background-color: rgba(0, 0, 0, 0.02) !important;
       }
     }
-    
+
     //Вертикальна лінія
     .rct-vertical-lines {
       .rct-vl {
         border-left: $border;
-        background-color: rgba(0, 0, 0, 0.01)!important;;
+        background-color: rgba(0, 0, 0, 0.01) !important;
       }
       //відмітка неділя вихідний
       .rct-vl.rct-day-0,
       .rct-vl.rct-day-6 {
-        background-color: rgba(0, 0, 0, 0.01)!important;;
+        background-color: rgba(0, 0, 0, 0.01) !important;
       }
     }
   }
+}
+
+.selected::after {
+  content: attr(data-info);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: $color-black;
+  background-color: rgba(93, 181, 93, 0.9) !important;
+  padding: 5px;
 }
