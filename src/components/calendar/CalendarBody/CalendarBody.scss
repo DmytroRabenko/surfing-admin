@@ -16,11 +16,27 @@
     z-index: 15;
     border-right: $border;
     border-left: $border;
+   // box-shadow: 10px 0px 35px rgba(0, 0, 0, 0.15);
   }
   //Календар
   .react-calendar-timeline {
+    //скролл для блоку   потестити
+    .rct-outer{
+      height: calc(100vh - 145px)!important;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .rct-scroll{  
+      overflow-x: hidden;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
     //header
     .rct-calendar-header {
+ 
+
       border: none;
       > div {
         height: 33px !important;
@@ -39,6 +55,7 @@
       border-bottom: none;
       border-left: none;
       background-color: $color-white;
+      color: rgba(34, 34, 34, 1);
     }
     //Відмітка поточного часу
     .rct-scroll {
@@ -46,7 +63,6 @@
         > div:first-child {
           background-color: $color-blue !important;
           width: 1px !important;
-          // height: 2px; /* Висота лінії */
         }
       }
     }
@@ -56,6 +72,8 @@
       border-right: $border;
       border-left: $border;
       left: 0;
+      box-shadow: 4px 0px 35px 0px rgba(0, 0, 0, 0.15);
+      z-index: 20;
       .rct-sidebar-row {
         border-bottom: $border;
         padding-left: 55px;
@@ -63,6 +81,7 @@
         background-repeat: no-repeat !important;
         background-position: 25px 18px !important;
         background-color: $color-white !important;
+  
       }
       .rct-sidebar-row-odd {
         background-color: $color-white !important;
@@ -111,7 +130,7 @@
     .rct-vertical-lines {
       .rct-vl {
         border-left: $border;
-        background-color: rgba(0, 0, 0, 0.01) !important;
+        background-color: rgba(0, 0, 0, 0.01)!important;
       }
       //відмітка неділя вихідний
       .rct-vl.rct-day-0,

@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react';
 import TableRow from '../TableRow';
 import styles from './Table.module.scss';
+import SkeletonLoading from 'src/components/SkeletonLoading';
 type Props = {};
 const inventory = [
   {
@@ -205,8 +207,20 @@ const inventory = [
 ];
 
 function Table({}: Props) {
+
+
+//-----------------delete SkeletonLoading temporarily --------------
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 20000);
+  }, []);
+//-----------------delete SkeletonLoading temporarily --------------
   return (
     <div className={styles.container}>
+      <SkeletonLoading isLoading={isLoading} style={{ height: 'calc(100vh - 170px)' }}>
         <table className={styles.table}>
          <tbody>
             <tr className={styles.header}>
@@ -224,6 +238,7 @@ function Table({}: Props) {
             ))}
          </tbody>
         </table>
+      </SkeletonLoading>
     </div>
   );
 }

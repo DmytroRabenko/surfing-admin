@@ -9,7 +9,6 @@ const CalendarSearch = () => {
     const value = e.target.value;
     setSearchQuery(value);
 
-    // Тут ви можете виконати певну дію при введенні запиту, наприклад, фільтрацію подій за введеним значенням
     console.log('Введений запит:', value);
   };
   return (

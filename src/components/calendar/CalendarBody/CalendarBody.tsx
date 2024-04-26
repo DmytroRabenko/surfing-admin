@@ -152,15 +152,14 @@ const CalendarBody = ({
         minZoom={1000 * 60 * 60 * 24}
         maxZoom={1000 * 60 * 60 * 24 * 7}
         canMove={false} //можливість перетягування
+        canResize={false}//можливість розтягувати
         itemTouchSendsClick
         traditionalZoom
         // onItemSelect={handleItemSelect}
         onTimeChange={handleTimeChange}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
-
           const currentItem = data.items.find(el => el.id === item.id);
-
           return (
             <div {...restProps} data-info={`title: ${currentItem?.title}, id: ${currentItem?.id}`}>
               <div className="rct-item-content">{itemContext.title}</div>

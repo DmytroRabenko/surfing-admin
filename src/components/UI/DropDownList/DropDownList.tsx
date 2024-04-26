@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { default as Chevron } from 'src/assets/icons/calendar-chevron.svg?react';
-import { useClickOutside } from 'src/utils/useClickOutside';
 import s from './DropdownList.module.scss';
 
 interface DropdownListPropsData {
@@ -21,9 +20,7 @@ const DropdownList = ({
   const dropdownListRef = useRef<HTMLDivElement>(null);
   const [showList, setShowList] = useState(false);
   const [buttonText, setButtonText] = useState(defaultText);
-  useClickOutside(showList, dropdownListRef, () => {
-    setShowList(false);
-  });
+
   const handleClickAction = (id: number, name: string) => {
     action(id);
     setButtonText(name);
@@ -31,11 +28,20 @@ const DropdownList = ({
   };
 
   return (
-    <div className={s.dropdownList} ref={dropdownListRef}>
-      <button className={s.dropdownList__trigger} onClick={() => setShowList(!showList)}>
+    <div
+      className={s.dropdownList}
+      ref={dropdownListRef}
+      onMouseEnter={() => {
+        setShowList(true);
+      }}
+      onMouseLeave={() => {
+        setShowList(false);
+      }}
+    >
+      <button className={`${s.dropdownList__trigger} ${showList ? s.active : ''}`}>
         {children}
         {buttonText}
-        <span className={`${s.chevron} ${showList ? s.active : ''}`}>
+        <span className={s.chevron}>
           <Chevron />
         </span>
       </button>
