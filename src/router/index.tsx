@@ -3,7 +3,7 @@ import Chat from 'src/pages/Chat';
 import Inventory from 'src/pages/Inventory';
 import Page404 from 'src/pages/NotFound';
 import Dashboard from 'src/pages/Dashboard';
-import EquipmentInfo from 'src/pages/Inventory/EquipmentInfo';
+
 
 export const router = [
   {
@@ -22,10 +22,6 @@ export const router = [
     path: '/chat',
     element: <Chat />,
   },
-  // {
-  //   path: '/inventory/info',
-  //   element: <EquipmentInfo />,
-  // },
   {
     path: '*',
     element: <Page404 />,

@@ -8,21 +8,21 @@ import AddEquipmentPhoto from 'src/components/inventory/AddEquipmentPhoto';
 import { useState } from 'react';
 import CustomPopup from 'src/components/CustomPopup';
 type Props = {};
-type EquipmentState = {
-  qrCode: string;
-  name: string;
-  description: string;
-  material: string;
-  category: string;
-  length: number | null;
-  width: number | null;
-  thickness: number | null;
-  volume: number | null;
-  tailShape: string;
-  noseShape: string;
-  rocker: string;
-  rails: string;
-};
+// type EquipmentState = {
+//   qrCode: string;
+//   name: string;
+//   description: string;
+//   material: string;
+//   category: string;
+//   length: number | null;
+//   width: number | null;
+//   thickness: number | null;
+//   volume: number | null;
+//   tailShape: string;
+//   noseShape: string;
+//   rocker: string;
+//   rails: string;
+// };
 const AddEquipmentForm = ({}: Props) => {
   const selectStyles = {
     border: '1px solid rgb(223,223,223)',
@@ -39,21 +39,21 @@ const AddEquipmentForm = ({}: Props) => {
 
   const [textareaChar, setTextareaChar] = useState<string>('');
   const [equipmnentPhotoModalOpen, setEuipmnentPhotoModalOpen] = useState(false);
-  const [newEquipment, setNewEquipment] = useState<EquipmentState>({
-    qrCode: '',
-    name: '',
-    description: '',
-    material: '',
-    category: '',
-    length: null,
-    width: null,
-    thickness: null,
-    volume: null,
-    tailShape: '',
-    noseShape: '',
-    rocker: '',
-    rails: '',
-  });
+  // const [newEquipment, setNewEquipment] = useState<EquipmentState>({
+  //   qrCode: '',
+  //   name: '',
+  //   description: '',
+  //   material: '',
+  //   category: '',
+  //   length: null,
+  //   width: null,
+  //   thickness: null,
+  //   volume: null,
+  //   tailShape: '',
+  //   noseShape: '',
+  //   rocker: '',
+  //   rails: '',
+  // });
 
   const onTextareaChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
