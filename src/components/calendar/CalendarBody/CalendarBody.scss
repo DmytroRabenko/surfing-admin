@@ -1,6 +1,4 @@
 @import 'src/assets/scss/variables';
-
-@import 'src/assets/scss/variables';
 .navigationButtons {
   position: absolute;
   left: 400px;
@@ -32,7 +30,7 @@
         display: none;
       }
     }
-    //header
+    //header  
     .rct-calendar-header {
       border: none;
       > div {
@@ -62,6 +60,18 @@
           width: 1px !important;
           z-index: 100;
         }
+      }
+    }
+
+    .test {
+      .rct-dateHeader {
+        display: none;
+      }
+    }
+
+    .test {
+      .rct-dateHeader:nth-child(4n) {
+        display: block;
       }
     }
 
