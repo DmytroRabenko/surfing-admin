@@ -12,7 +12,7 @@ type Props = {};
 
 const AddEquipmentForm = ({}: Props) => {
   const selectStyles = {
-    border: '1px solid rgb(223,223,223)',
+    border: `1px solid ${vars.colorGray4}`,
     borderRadius: '12px',
     padding: '14px 14px',
     color: vars.colorTextGray7,
@@ -26,7 +26,7 @@ const AddEquipmentForm = ({}: Props) => {
 
   const [textareaChar, setTextareaChar] = useState<string>('');
   const [equipmnentPhotoModalOpen, setEuipmnentPhotoModalOpen] = useState(false);
- 
+
   const onTextareaChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     e.preventDefault();
     if (textareaChar.length < maxTextareaLength) {
