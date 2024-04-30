@@ -1,0 +1,85 @@
+@import "../../../assets/scss/variables";
+
+.card {
+    width: 100%;
+    max-width: 1100px;
+    height: 100%;
+    max-height: 512px;
+    display: flex;
+    gap: 30px;
+    background-color: $color-white;
+    &__img {
+        position: relative;
+        width: 100%;
+        max-width: 387px;
+        & img {
+            object-fit: cover;
+            height: 100%;
+        }
+        & .allPhotoBtn {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 100%;
+            max-width: 112px;
+            background-color: rgba(0, 0, 0, 0.17);
+            backdrop-filter: blur(12px);
+            filter: drop-shadow(0 4px 25px rgba(215, 173, 138, 0.3));
+            padding: 12px 16px;
+            font-size: 12px;
+            color: $color-white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+    &__info {
+        display: flex;
+        gap: 15px;
+    }
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: 280px;
+}
+.label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 12px;
+    color: $color-text-gray6;
+    line-height: 1.36;
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+.qrCode {
+    height: 116px;
+}
+.inputGroup {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+
+    &:last-child {
+        align-items: flex-end;
+    }
+}
+.btnGroup {
+    display: flex;
+    gap: 6px;
+}
+.button {
+    display: flex;
+    align-items: center;
+    background-color: $color-white;
+    padding: 11px 14px;
+    border: 1px solid $color-gray4;
+    border-radius: 8px;
+}

@@ -1,0 +1,44 @@
+@import "../../../assets/scss/variables";
+.photoAdd {
+    display: flex;
+    flex-direction: column;
+    gap: 58px;
+    width: 561px;
+    height: 481px;
+
+    &__input {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        color: $color-text-gray7;
+        border: 1px solid $color-gray4;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(243, 247, 254);
+        }
+        & img {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+        }
+    }
+
+    & button {
+        align-self: end;
+    }
+}
+.container {
+    display: flex;
+    flex: 1;
+    gap: 18px;
+}
+.photos {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    max-height: 368px;
+}

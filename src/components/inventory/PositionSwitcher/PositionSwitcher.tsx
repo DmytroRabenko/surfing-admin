@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Button from '../Button';
+import Button from '../../../components/inventory/Button';
 
 import FirstPositionIcon from '../../../assets/icons/horizontal-stripes.svg?react';
 import SecondPositionIcon from '../../../assets/icons/stair-reverse.svg?react';
@@ -10,8 +10,8 @@ import styles from './PositionSwitcher.module.scss';
 
 type Props = {};
 
-function PositionSwitcher({}: Props) {
-  const { colorBlue,colorTextGray6 } = vars;
+const PositionSwitcher = ({}: Props) => {
+  const { colorBlue, colorTextGray6 } = vars;
 
   const [isFirstSelected, setIsFirstSelected] = useState(true);
   const [isSecondSelected, setIsSecondSelected] = useState(false);
@@ -49,6 +49,6 @@ function PositionSwitcher({}: Props) {
       </Button>
     </div>
   );
-}
+};
 
 export default PositionSwitcher;
