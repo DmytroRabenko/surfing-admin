@@ -25,6 +25,7 @@ const DropdownList = ({
     action(id);
     setButtonText(name);
     setShowList(false);
+    
   };
 
   return (

@@ -7,125 +7,13 @@ import Timeline, {
 } from 'react-calendar-timeline';
 // @ts-expect-error Missing declaration file for resize-detector/container
 import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container';
-
 import CalendarSearch from '../CalendarSearch/CalendarSearch';
-
+import calendarData from '../calendarData';
+import { CalendarItemType } from 'src/type/calendar';
 import 'react-calendar-timeline/lib/Timeline.css';
 import './CalendarBody.scss';
-
-const data = {
-  groups: [
-    { id: 1, title: 'Surf 1' },
-    { id: 2, title: 'Surf 2' },
-    { id: 3, title: 'Surf 3' },
-    { id: 4, title: 'Surf 4' },
-    { id: 5, title: 'Surf 5' },
-    { id: 6, title: 'Surf 6' },
-    { id: 7, title: 'Surf 7' },
-    { id: 8, title: 'Surf 8' },
-    { id: 9, title: 'Surf 9' },
-    { id: 10, title: 'Surf 10' },
-    { id: 11, title: 'Surf 11' },
-    { id: 12, title: 'Surf 12' },
-  ],
-  items: [
-    {
-      id: 1,
-      group: 1,
-      title: 'item 1',
-      tip: 'additional information',
-      start_time: moment(),
-      end_time: moment().add(3, 'hour'),
-      itemProps: {
-        // ці додаткові атрибути передаються до корінь <div /> кожного елемента як <div {...itemProps} />
-        'data-custom-attribute': 'Випадковий вміст',
-        'aria-hidden': true,
-        onMouseMove: () => {
-          console.log('Ви клацнули двічі!');
-        },
-        className: 'weekend',
-        style: {},
-      },
-    },
-    {
-      id: 2,
-      group: 2,
-      title: 'item 2',
-      start_time: moment().add(5, 'hour'),
-      end_time: moment().add(10, 'hour'),
-    },
-    {
-      id: 3,
-      group: 1,
-      title: 'item 3',
-      start_time: moment().add(-24, 'hour'),
-      end_time: moment().add(-20, 'hour'),
-    },
-    {
-      id: 4,
-      group: 1,
-      title: 'item 1',
-      start_time: moment(-4, 'hour'),
-      end_time: moment().add(-2, 'hour'),
-    },
-    {
-      id: 5,
-      group: 4,
-      title: 'item 1',
-      start_time: moment(),
-      end_time: moment().add(3, 'hour'),
-    },
-    {
-      id: 6,
-      group: 4,
-      title: 'item 2',
-      start_time: moment().add(5, 'hour'),
-      end_time: moment().add(10, 'hour'),
-    },
-    {
-      id: 7,
-      group: 4,
-      title: 'item 3',
-      start_time: moment().add(-24, 'hour'),
-      end_time: moment().add(-20, 'hour'),
-    },
-    {
-      id: 8,
-      group: 5,
-      title: 'item 2',
-      start_time: moment().add(-0.5, 'hour'),
-      end_time: moment().add(0.5, 'hour'),
-    },
-    {
-      id: 9,
-      group: 7,
-      title: 'item 3',
-      start_time: moment().add(2, 'hour'),
-      end_time: moment().add(24, 'hour'),
-    },
-    {
-      id: 10,
-      group: 6,
-      title: 'item 1',
-      start_time: moment(),
-      end_time: moment().add(8, 'hour'),
-    },
-    {
-      id: 11,
-      group: 8,
-      title: 'item 2',
-      start_time: moment().add(-5, 'hour'),
-      end_time: moment().add(5, 'hour'),
-    },
-    {
-      id: 12,
-      group: 10,
-      title: 'item 3',
-      start_time: moment().add(1, 'hour'),
-      end_time: moment().add(12, 'hour'),
-    },
-  ],
-};
+import { useState } from 'react';
+import CalendarPopup from '../CalendarPopup';
 
 interface CalendarBodyProps {
   visibleTimeStart: Moment;
@@ -138,6 +26,21 @@ const CalendarBody = ({
   visibleTimeEnd,
   handleTimeChange,
 }: CalendarBodyProps) => {
+  // const [showItemDescription, setShowItemDescription] = useState(false);
+  const data = calendarData;
+  const [activeItem, setActiveItem] = useState<CalendarItemType | null>(null);
+  const [hoveredItemPosition, setHoveredItemPosition] = useState<{ top: number; left: number }>({
+    top: 0,
+    left: 0,
+  });
+  // Перевірка, чи різниця між start_time та end_time кожного елемента більше 3 годин
+  const shouldApplyClipPath = (item: CalendarItemType) => {
+    const startTime = moment(item.start_time);
+    const endTime = moment(item.end_time);
+    const diffHours = endTime.diff(startTime, 'hours');
+    return diffHours > 4;
+  };
+
   return (
     <div className="calendarBody">
       <Timeline
@@ -148,20 +51,40 @@ const CalendarBody = ({
         visibleTimeEnd={visibleTimeEnd.valueOf()}
         sidebarWidth={330} //ширина лівого меню
         lineHeight={56} //висота строки
-        itemHeightRatio={1} //висота заброньованого планки
+        itemHeightRatio={0.9} //висота заброньованого планки
         minZoom={1000 * 60 * 60 * 24}
         maxZoom={1000 * 60 * 60 * 24 * 7}
         canMove={false} //можливість перетягування
-        canResize={false}//можливість розтягувати
+        canResize={false} //можливість розтягувати
         itemTouchSendsClick
         traditionalZoom
-        // onItemSelect={handleItemSelect}
+        //onItemSelect={handleItemSelect}
         onTimeChange={handleTimeChange}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
           const currentItem = data.items.find(el => el.id === item.id);
+          if (!currentItem) {
+            // Якщо елемент не знайдено, поверніть null або відповідну обробку помилок.
+            return null; // або обробіть цю ситуацію якимось іншим способом
+          }
+          const clipPathCondition = shouldApplyClipPath(currentItem);
+
+          // Додаємо клас, якщо умова виконується
+          const itemClassName = clipPathCondition ? 'rct-item-clipped' : '';
           return (
-            <div {...restProps} data-info={`title: ${currentItem?.title}, id: ${currentItem?.id}`}>
+            <div
+              {...restProps}
+              className={`rct-item ${itemClassName}`}
+              data-info={`title: ${currentItem?.title}, id: ${currentItem?.id}`}
+              onMouseEnter={event => {
+                setActiveItem(item);
+                setHoveredItemPosition({
+                  top: event.clientY,
+                  left: event.clientX,
+                });
+              }}
+              onMouseLeave={() => setActiveItem(null)}
+            >
               <div className="rct-item-content">{itemContext.title}</div>
             </div>
           );
@@ -182,6 +105,9 @@ const CalendarBody = ({
           <DateHeader />
         </TimelineHeaders>
       </Timeline>
+      {activeItem && (
+        <CalendarPopup activeItem={activeItem} hoveredItemPosition={hoveredItemPosition} />
+      )}
     </div>
   );
 };
