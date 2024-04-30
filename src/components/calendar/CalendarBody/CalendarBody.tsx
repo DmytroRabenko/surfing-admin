@@ -60,6 +60,14 @@ const CalendarBody = ({
         traditionalZoom
         //onItemSelect={handleItemSelect}
         onTimeChange={handleTimeChange}
+        timeSteps={{
+          second: 1,
+          minute: 1,
+          hour: 2,
+          day: 1,
+          month: 1,
+          year: 1,
+        }}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
           const currentItem = data.items.find(el => el.id === item.id);
@@ -102,7 +110,7 @@ const CalendarBody = ({
             }}
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
-          <DateHeader />
+          <DateHeader/>
         </TimelineHeaders>
       </Timeline>
       {activeItem && (
