@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import moment, { Moment } from 'moment';
 import Timeline, {
   TodayMarker,
@@ -7,18 +8,27 @@ import Timeline, {
 } from 'react-calendar-timeline';
 // @ts-expect-error Missing declaration file for resize-detector/container
 import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container';
+
 import CalendarSearch from '../CalendarSearch/CalendarSearch';
+import CalendarPopup from '../CalendarPopup';
+
 import calendarData from '../calendarData';
 import { CalendarItemType } from 'src/type/calendar';
 import 'react-calendar-timeline/lib/Timeline.css';
 import './CalendarBody.scss';
-import { useState } from 'react';
-import CalendarPopup from '../CalendarPopup';
 
 interface CalendarBodyProps {
   visibleTimeStart: Moment;
   visibleTimeEnd: Moment;
   handleTimeChange: (visibleTimeStart: number, visibleTimeEnd: number) => void;
+}
+
+interface timelineContext {
+  timelineWidth: number;
+  visibleTimeStart: number;
+  visibleTimeEnd: number;
+  canvasTimeStart: number;
+  canvasTimeEnd: number;
 }
 
 const CalendarBody = ({
@@ -28,6 +38,15 @@ const CalendarBody = ({
 }: CalendarBodyProps) => {
   // const [showItemDescription, setShowItemDescription] = useState(false);
   const data = calendarData;
+  const [labelFormat, setLabelFormat] = useState('HH');
+  const [timeSteps, setTimeSteps] = useState({
+    second: 1,
+    minute: 1,
+    hour: 1,
+    day: 1,
+    month: 1,
+    year: 1,
+  });
   const [activeItem, setActiveItem] = useState<CalendarItemType | null>(null);
   const [hoveredItemPosition, setHoveredItemPosition] = useState<{ top: number; left: number }>({
     top: 0,
@@ -40,6 +59,33 @@ const CalendarBody = ({
     const diffHours = endTime.diff(startTime, 'hours');
     return diffHours > 4;
   };
+
+  const updateTimeSteps = (hourStep: number, labelFormatValue: string) => {
+    setTimeSteps({
+      second: 1,
+      minute: 1,
+      hour: hourStep,
+      day: 1,
+      month: 1,
+      year: 1,
+    });
+    setLabelFormat(labelFormatValue);
+  };
+
+const handleZoom = (timelineContext: timelineContext, unit: string) => {
+  const { canvasTimeStart, canvasTimeEnd, timelineWidth } = timelineContext;
+  const zoomIndex = (canvasTimeEnd - canvasTimeStart) / 10000000;
+
+  if (zoomIndex <= 35 && unit === "hour") {
+    updateTimeSteps(1, 'HH');
+  } else if (zoomIndex > 35 && zoomIndex <= 62 && unit === "hour") {
+    updateTimeSteps(2, 'HH');
+  } else {
+    setLabelFormat(timelineWidth > 1500 ? 'dd D' : 'dddd D');
+  }
+
+  console.log(timelineWidth);
+};
 
   return (
     <div className="calendarBody">
@@ -60,14 +106,8 @@ const CalendarBody = ({
         traditionalZoom
         //onItemSelect={handleItemSelect}
         onTimeChange={handleTimeChange}
-        timeSteps={{
-          second: 1,
-          minute: 1,
-          hour: 2,
-          day: 1,
-          month: 1,
-          year: 1,
-        }}
+        onZoom={handleZoom}
+        timeSteps={timeSteps}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
           const currentItem = data.items.find(el => el.id === item.id);
@@ -110,7 +150,7 @@ const CalendarBody = ({
             }}
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
-          <DateHeader/>
+          <DateHeader labelFormat={labelFormat} />
         </TimelineHeaders>
       </Timeline>
       {activeItem && (

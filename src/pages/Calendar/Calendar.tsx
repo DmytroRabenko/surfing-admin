@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import moment from 'moment';
 import CalendarHeader from 'src/components/calendar/CalendarHeader/CalendarHeader';
-import CalendarBody from 'src/components/calendar/CalendarBody/CalendarBody';
+import CalendarBody from 'src/components/calendar/CalendarBody';
 
 import s from './Calendar.module.scss';
 const Calendar = () => {
