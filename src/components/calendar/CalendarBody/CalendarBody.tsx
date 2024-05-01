@@ -60,40 +60,32 @@ const CalendarBody = ({
     return diffHours > 4;
   };
 
-  const handleZoom = (timelineContext: timelineContext, unit: string) => {
-    const { canvasTimeStart, canvasTimeEnd, timelineWidth } = timelineContext;
-    const zoomIndex = (canvasTimeEnd - canvasTimeStart) / 10000000;
-
-    if (zoomIndex <= 35 && unit === "hour") {
-      setTimeSteps({
-        second: 1,
-        minute: 1,
-        hour: 1,
-        day: 1,
-        month: 1,
-        year: 1,
-      });
-      setLabelFormat('HH');
-    } else if (zoomIndex > 35 && zoomIndex <= 62 && unit === "hour") {
-      setTimeSteps({
-        second: 1,
-        minute: 1,
-        hour: 2,
-        day: 1,
-        month: 1,
-        year: 1,
-      });
-      setLabelFormat('HH');
-    } else {
-      if (timelineWidth > 1500) {
-        setLabelFormat('dd D');
-      } else {
-        setLabelFormat('dddd D');
-      }
-    }
-
-    console.log(timelineWidth);
+  const updateTimeSteps = (hourStep: number, labelFormatValue: string) => {
+    setTimeSteps({
+      second: 1,
+      minute: 1,
+      hour: hourStep,
+      day: 1,
+      month: 1,
+      year: 1,
+    });
+    setLabelFormat(labelFormatValue);
   };
+
+const handleZoom = (timelineContext: timelineContext, unit: string) => {
+  const { canvasTimeStart, canvasTimeEnd, timelineWidth } = timelineContext;
+  const zoomIndex = (canvasTimeEnd - canvasTimeStart) / 10000000;
+
+  if (zoomIndex <= 35 && unit === "hour") {
+    updateTimeSteps(1, 'HH');
+  } else if (zoomIndex > 35 && zoomIndex <= 62 && unit === "hour") {
+    updateTimeSteps(2, 'HH');
+  } else {
+    setLabelFormat(timelineWidth > 1500 ? 'dd D' : 'dddd D');
+  }
+
+  console.log(timelineWidth);
+};
 
   return (
     <div className="calendarBody">
@@ -159,7 +151,6 @@ const CalendarBody = ({
           </SidebarHeader>
           <DateHeader unit="primaryHeader" />
           <DateHeader labelFormat={labelFormat} />
-          {/* <DateHeader /> */}
         </TimelineHeaders>
       </Timeline>
       {activeItem && (
