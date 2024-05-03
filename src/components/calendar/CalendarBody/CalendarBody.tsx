@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import moment, { Moment } from 'moment';
 import Timeline, {
   TodayMarker,
@@ -8,10 +8,8 @@ import Timeline, {
 } from 'react-calendar-timeline';
 // @ts-expect-error Missing declaration file for resize-detector/container
 import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container';
-
 import CalendarSearch from '../CalendarSearch/CalendarSearch';
 import CalendarPopup from '../CalendarPopup';
-
 import calendarData from '../calendarData';
 import { CalendarItemType } from 'src/type/calendar';
 import 'react-calendar-timeline/lib/Timeline.css';
@@ -23,34 +21,28 @@ interface CalendarBodyProps {
   handleTimeChange: (visibleTimeStart: number, visibleTimeEnd: number) => void;
 }
 
-interface timelineContext {
-  timelineWidth: number;
-  visibleTimeStart: number;
-  visibleTimeEnd: number;
-  canvasTimeStart: number;
-  canvasTimeEnd: number;
-}
-
 const CalendarBody = ({
   visibleTimeStart,
   visibleTimeEnd,
   handleTimeChange,
 }: CalendarBodyProps) => {
-  // const [showItemDescription, setShowItemDescription] = useState(false);
   const data = calendarData;
-  const [labelFormat, setLabelFormat] = useState('HH');
-  const [timeSteps, setTimeSteps] = useState({
-    second: 1,
-    minute: 1,
-    hour: 1,
-    day: 1,
-    month: 1,
-    year: 1,
-  });
   const [activeItem, setActiveItem] = useState<CalendarItemType | null>(null);
+  //Позиціонування Popup
   const [hoveredItemPosition, setHoveredItemPosition] = useState<{ top: number; left: number }>({
     top: 0,
     left: 0,
+  });
+  //Відслідковування zoom для DataHeader
+  const [zoom, setZoom] = useState<number>(1);
+  const [dayLabelFormat, setDayLabelFormat] = useState('dddd DD');
+  const [timeSteps, setTimeSteps] = useState({
+    second: 1,
+    minute: 1,
+    hour: 2,
+    day: 1,
+    month: 1,
+    year: 1,
   });
   // Перевірка, чи різниця між start_time та end_time кожного елемента більше 3 годин
   const shouldApplyClipPath = (item: CalendarItemType) => {
@@ -59,8 +51,26 @@ const CalendarBody = ({
     const diffHours = endTime.diff(startTime, 'hours');
     return diffHours > 4;
   };
-
-  const updateTimeSteps = (hourStep: number, labelFormatValue: string) => {
+  // Обчислити зум на основі видимого часу
+  const calculateZoom = () => {
+    const zoomLevel =
+      (visibleTimeEnd.valueOf() - visibleTimeStart.valueOf()) / (1000 * 60 * 60 * 24); // Кількість днів
+    setZoom(zoomLevel);
+  };
+  //Крок відображення годин
+  const updateTimeSteps = (zoom: number) => {
+    let hourStep;
+    if (zoom >= 6) {
+      hourStep = 6;
+    } else if (zoom >= 4) {
+      hourStep = 4;
+    } else if (zoom >= 3) {
+      hourStep = 3;
+    } else if (zoom >= 2) {
+      hourStep = 2;
+    } else {
+      hourStep = 1;
+    }
     setTimeSteps({
       second: 1,
       minute: 1,
@@ -69,23 +79,24 @@ const CalendarBody = ({
       month: 1,
       year: 1,
     });
-    setLabelFormat(labelFormatValue);
+  };
+  //Формат відображення днів
+  const updateDayLabelFormat = (zoom: number) => {
+    let format;
+    if (zoom >= 5) {
+      format = 'ddd DD';
+    } else {
+      format = 'dddd DD';
+    }
+    setDayLabelFormat(format);
   };
 
-const handleZoom = (timelineContext: timelineContext, unit: string) => {
-  const { canvasTimeStart, canvasTimeEnd, timelineWidth } = timelineContext;
-  const zoomIndex = (canvasTimeEnd - canvasTimeStart) / 10000000;
-
-  if (zoomIndex <= 35 && unit === "hour") {
-    updateTimeSteps(1, 'HH');
-  } else if (zoomIndex > 35 && zoomIndex <= 62 && unit === "hour") {
-    updateTimeSteps(2, 'HH');
-  } else {
-    setLabelFormat(timelineWidth > 1500 ? 'dd D' : 'dddd D');
-  }
-
-  console.log(timelineWidth);
-};
+  useEffect(() => {
+    calculateZoom();
+    updateTimeSteps(zoom);
+    updateDayLabelFormat(zoom);
+    //eslint-disable-next-line
+  }, [zoom, visibleTimeStart, visibleTimeEnd]);
 
   return (
     <div className="calendarBody">
@@ -104,19 +115,15 @@ const handleZoom = (timelineContext: timelineContext, unit: string) => {
         canResize={false} //можливість розтягувати
         itemTouchSendsClick
         traditionalZoom
-        //onItemSelect={handleItemSelect}
+        timeSteps={timeSteps} //кроки в DataHeader
         onTimeChange={handleTimeChange}
-        onZoom={handleZoom}
-        timeSteps={timeSteps}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
           const currentItem = data.items.find(el => el.id === item.id);
           if (!currentItem) {
-            // Якщо елемент не знайдено, поверніть null або відповідну обробку помилок.
-            return null; // або обробіть цю ситуацію якимось іншим способом
+            return null;
           }
           const clipPathCondition = shouldApplyClipPath(currentItem);
-
           // Додаємо клас, якщо умова виконується
           const itemClassName = clipPathCondition ? 'rct-item-clipped' : '';
           return (
@@ -149,8 +156,8 @@ const handleZoom = (timelineContext: timelineContext, unit: string) => {
               );
             }}
           </SidebarHeader>
-          <DateHeader unit="primaryHeader" />
-          <DateHeader labelFormat={labelFormat} />
+          <DateHeader unit="day" labelFormat={dayLabelFormat} />
+          <DateHeader unit="hour" labelFormat="HH" />
         </TimelineHeaders>
       </Timeline>
       {activeItem && (
