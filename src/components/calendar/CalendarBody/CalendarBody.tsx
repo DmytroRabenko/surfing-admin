@@ -97,6 +97,7 @@ const CalendarBody = ({
     updateDayLabelFormat(zoom);
     //eslint-disable-next-line
   }, [zoom, visibleTimeStart, visibleTimeEnd]);
+
   return (
     <div className="calendarBody">
       <Timeline
