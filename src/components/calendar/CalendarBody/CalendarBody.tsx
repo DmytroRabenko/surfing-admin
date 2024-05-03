@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import moment, { Moment } from 'moment';
 import Timeline, {
   TodayMarker,
@@ -8,12 +9,11 @@ import Timeline, {
 // @ts-expect-error Missing declaration file for resize-detector/container
 import containerResizeDetector from 'react-calendar-timeline/lib/resize-detector/container';
 import CalendarSearch from '../CalendarSearch/CalendarSearch';
+import CalendarPopup from '../CalendarPopup';
 import calendarData from '../calendarData';
 import { CalendarItemType } from 'src/type/calendar';
 import 'react-calendar-timeline/lib/Timeline.css';
 import './CalendarBody.scss';
-import { useState } from 'react';
-import CalendarPopup from '../CalendarPopup';
 
 interface CalendarBodyProps {
   visibleTimeStart: Moment;
@@ -26,12 +26,23 @@ const CalendarBody = ({
   visibleTimeEnd,
   handleTimeChange,
 }: CalendarBodyProps) => {
-  // const [showItemDescription, setShowItemDescription] = useState(false);
   const data = calendarData;
   const [activeItem, setActiveItem] = useState<CalendarItemType | null>(null);
+  //Позиціонування Popup
   const [hoveredItemPosition, setHoveredItemPosition] = useState<{ top: number; left: number }>({
     top: 0,
     left: 0,
+  });
+  //Відслідковування zoom для DataHeader
+  const [zoom, setZoom] = useState<number>(1);
+  const [dayLabelFormat, setDayLabelFormat] = useState('dddd DD');
+  const [timeSteps, setTimeSteps] = useState({
+    second: 1,
+    minute: 1,
+    hour: 2,
+    day: 1,
+    month: 1,
+    year: 1,
   });
   // Перевірка, чи різниця між start_time та end_time кожного елемента більше 3 годин
   const shouldApplyClipPath = (item: CalendarItemType) => {
@@ -40,7 +51,52 @@ const CalendarBody = ({
     const diffHours = endTime.diff(startTime, 'hours');
     return diffHours > 4;
   };
+  // Обчислити зум на основі видимого часу
+  const calculateZoom = () => {
+    const zoomLevel =
+      (visibleTimeEnd.valueOf() - visibleTimeStart.valueOf()) / (1000 * 60 * 60 * 24); // Кількість днів
+    setZoom(zoomLevel);
+  };
+  //Крок відображення годин
+  const updateTimeSteps = (zoom: number) => {
+    let hourStep;
+    if (zoom >= 6) {
+      hourStep = 6;
+    } else if (zoom >= 4) {
+      hourStep = 4;
+    } else if (zoom >= 3) {
+      hourStep = 3;
+    } else if (zoom >= 2) {
+      hourStep = 2;
+    } else {
+      hourStep = 1;
+    }
+    setTimeSteps({
+      second: 1,
+      minute: 1,
+      hour: hourStep,
+      day: 1,
+      month: 1,
+      year: 1,
+    });
+  };
+  //Формат відображення днів
+  const updateDayLabelFormat = (zoom: number) => {
+    let format;
+    if (zoom >= 5) {
+      format = 'ddd DD';
+    } else {
+      format = 'dddd DD';
+    }
+    setDayLabelFormat(format);
+  };
 
+  useEffect(() => {
+    calculateZoom();
+    updateTimeSteps(zoom);
+    updateDayLabelFormat(zoom);
+    //eslint-disable-next-line
+  }, [zoom, visibleTimeStart, visibleTimeEnd]);
   return (
     <div className="calendarBody">
       <Timeline
@@ -58,17 +114,15 @@ const CalendarBody = ({
         canResize={false} //можливість розтягувати
         itemTouchSendsClick
         traditionalZoom
-        //onItemSelect={handleItemSelect}
+        timeSteps={timeSteps} //кроки в DataHeader
         onTimeChange={handleTimeChange}
         itemRenderer={({ item, itemContext, getItemProps }) => {
           const { ...restProps } = getItemProps({});
           const currentItem = data.items.find(el => el.id === item.id);
           if (!currentItem) {
-            // Якщо елемент не знайдено, поверніть null або відповідну обробку помилок.
-            return null; // або обробіть цю ситуацію якимось іншим способом
+            return null;
           }
           const clipPathCondition = shouldApplyClipPath(currentItem);
-
           // Додаємо клас, якщо умова виконується
           const itemClassName = clipPathCondition ? 'rct-item-clipped' : '';
           return (
@@ -101,8 +155,8 @@ const CalendarBody = ({
               );
             }}
           </SidebarHeader>
-          <DateHeader unit="primaryHeader" />
-          <DateHeader />
+          <DateHeader unit="day" labelFormat={dayLabelFormat} />
+          <DateHeader unit="hour" labelFormat="HH" />
         </TimelineHeaders>
       </Timeline>
       {activeItem && (

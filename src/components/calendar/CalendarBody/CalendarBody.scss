@@ -71,7 +71,7 @@
       border-left: $border;
       left: 0;
       box-shadow: 4px 0px 35px 0px rgba(0, 0, 0, 0.15);
-      z-index: 20;
+      z-index: 10;
       .rct-sidebar-row {
         border-bottom: $border;
         padding-left: 55px;
@@ -106,7 +106,6 @@
     .rct-horizontal-lines {
       .rct-hl-even,
       .rct-hl-odd {
-       // border-bottom: $border;
        border-bottom: 1px solid rgba(83, 87, 100, .1);
         background-color: rgba(0, 0, 0, 0.02) !important;
       }
@@ -115,7 +114,6 @@
     //Вертикальна лінія
     .rct-vertical-lines {
       .rct-vl {
-       // border-left: $border;
         border-left:1px solid rgba(83, 87, 100, .1);
         background-color: rgba(0, 0, 0, 0.01) !important;
       }
