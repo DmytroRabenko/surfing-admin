@@ -19,6 +19,7 @@
     justify-content: space-between;
     cursor: pointer;
     &__activeOption {
+        width: fit-content;
         line-height: inherit;
         color: inherit;
         font-family: "Roboto", sans-serif;
