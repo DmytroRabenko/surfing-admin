@@ -38,7 +38,7 @@ function Select({
   color = '',
   flexibleWidth,
   textColor,
-  labelGap = 5,
+  labelGap,
   disabled = false,
   style,
 }: Props) {
@@ -73,7 +73,7 @@ function Select({
         onClick={toggleSelect}
         onMouseLeave={handleMouseLeave}
         textColor={textColor}
-        style={style }
+        style={style}
         ref={buttonRef}
       >
         <div className={styles.menu}>
@@ -102,31 +102,29 @@ function Select({
             )}
           </div>
           {isOpen && !disabled && (
-            <>
-              <div
-                className={styles.optionContainer}
-                style={{
-                  width: `calc(100% + ${+buttonPadding * 2}px)`,
-                  left: `-${buttonPadding}px`,
-                }}
-              >
-                <ul className={styles.options} style={{ bottom: `$` }}>
-                  {options?.map(option => (
-                    <li
-                      style={{ color }}
-                      className={styles.options__option}
-                      key={option}
-                      onClick={() => {
-                        setActiveOption(option);
-                        setIsOpen(false);
-                      }}
-                    >
-                      {option}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </>
+            <div
+              className={styles.optionContainer}
+              style={{
+                width: `calc(100% + ${+buttonPadding * 2}px)`,
+                left: `-${buttonPadding}px`,
+              }}
+            >
+              <ul className={styles.options} style={{ bottom: `$` }}>
+                {options?.map(option => (
+                  <li
+                    style={{ color }}
+                    className={styles.options__option}
+                    key={option}
+                    onClick={() => {
+                      setActiveOption(option);
+                      setIsOpen(false);
+                    }}
+                  >
+                    {option}
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       </Button>
