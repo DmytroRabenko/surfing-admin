@@ -43,7 +43,9 @@ function EquipmentInfoInput({
   const [labelPadding, setLabelPadding] = useState<Number>(0);
   const [value, setValue] = useState<string>('');
   const labelRef = useRef<HTMLInputElement | null>(null);
-
+  const selectWidth = width
+    ? `${width}px`
+    : `${flexibleWidth ? '100%' : `${textWidth + +labelPadding * 2 + 3}px`}`;
   useEffect(() => {
     if (labelRef.current) {
       const element = labelRef.current;
@@ -75,9 +77,7 @@ function EquipmentInfoInput({
           value={value}
           className={styles.input}
           style={{
-            width: width
-              ? `${width}px`
-              : `${flexibleWidth ? '100%' : `${textWidth + +labelPadding * 2 + 3}px`}`,
+            width: selectWidth,
             height: height ? `${height}px` : '',
             ...style,
           }}

@@ -79,7 +79,7 @@ const EquipmentInfo = ({ item }: Props) => {
             label="Material"
             textColor={vars.colorTextBlack2}
             disabled={disabled}
-            gap={5}
+            labelGap={5}
           />
           <Select
             name="Type"
@@ -91,6 +91,7 @@ const EquipmentInfo = ({ item }: Props) => {
             label="Type"
             textColor={vars.colorTextBlack2}
             disabled={disabled}
+            labelGap={5}
           />
         </div>
         <div className={styles.rightSide}>
@@ -123,10 +124,10 @@ const EquipmentInfo = ({ item }: Props) => {
               fontSize={14}
               style={selectStyles}
               arrow={ArrowIcon}
-              flexibleWidth={true}
               label="Tail shape"
               textColor={vars.colorTextBlack2}
               disabled={disabled}
+              labelGap={5}
             />
             <Select
               name="Pointed"
@@ -134,10 +135,10 @@ const EquipmentInfo = ({ item }: Props) => {
               fontSize={14}
               style={selectStyles}
               arrow={ArrowIcon}
-              flexibleWidth={true}
               label="Nose shape"
               textColor={vars.colorTextBlack2}
               disabled={disabled}
+              labelGap={5}
             />
           </div>
           <div className={styles.inputGroup}>
@@ -147,10 +148,10 @@ const EquipmentInfo = ({ item }: Props) => {
               fontSize={14}
               style={selectStyles}
               arrow={ArrowIcon}
-              flexibleWidth={true}
               label="Rails"
               textColor={vars.colorTextBlack2}
               disabled={disabled}
+              labelGap={5}
             />
             <Select
               name="High nose rocker"
@@ -158,10 +159,10 @@ const EquipmentInfo = ({ item }: Props) => {
               fontSize={14}
               style={selectStyles}
               arrow={ArrowIcon}
-              flexibleWidth={true}
               label="Rocker"
               textColor={vars.colorTextBlack2}
               disabled={disabled}
+              labelGap={5}
             />
           </div>
           <div className={styles.qrCode}>
