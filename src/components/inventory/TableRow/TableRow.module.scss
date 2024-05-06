@@ -20,9 +20,11 @@
     background-color: rgb(243, 247, 254);
 }
 .btn {
+    position: relative;
     background-color: transparent;
     border: none;
     cursor: pointer;
     color:inherit;
+    z-index: 2;
 }
 

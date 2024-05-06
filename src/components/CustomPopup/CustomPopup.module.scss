@@ -1,0 +1,27 @@
+@import "../../assets/scss/variables";
+
+.popover {
+    padding: 40px 50px;
+    background-color: $color-white;
+    border-radius: 12px;
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 26px;
+    }
+    &__name {
+        font-size: 24px;
+        font-weight: 500;
+    }
+    &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 120px;
+        width: 28px;
+        height: 28px;
+        border: 1px solid $color-text-gray6;
+        background-color: $color-white;
+        cursor: pointer;
+    }
+}
